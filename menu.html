@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Menu — Restaurant Maxence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --charbon:#17120F; --surface:#221A16; --surface2:#2C221C;
+  --braise:#E8944A; --safran:#F2C46B; --terrain:#4E8C5A;
+  --os:#F2EBE1; --os-doux:#C4B8AA; --ligne:rgba(242,235,225,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:var(--charbon);color:var(--os);font-family:'Figtree',system-ui,sans-serif;font-weight:300;
+  overflow-x:hidden;padding-bottom:96px}
+h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif}
+
+/* ── EN-TÊTE ── */
+.top{position:sticky;top:0;z-index:40;background:rgba(23,18,15,.94);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--ligne)}
+.top-in{padding:14px 18px 0;display:flex;align-items:center;gap:12px}
+.mark{width:40px;height:40px;border-radius:11px;flex-shrink:0;
+  background:linear-gradient(145deg,var(--safran),var(--braise) 60%,#B9642C);
+  display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:19px;color:#2A1608}
+.brand h1{font-size:17px;font-weight:600;letter-spacing:-.2px;line-height:1.1}
+.brand span{font-size:11px;color:var(--os-doux);letter-spacing:.6px;text-transform:uppercase}
+.site-link{margin-left:auto;font-size:11px;color:var(--safran);border:1px solid rgba(242,196,107,.35);
+  padding:7px 11px;border-radius:30px;text-decoration:none;white-space:nowrap}
+
+/* onglets catégories */
+.cats{display:flex;gap:8px;overflow-x:auto;padding:12px 18px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cat{flex-shrink:0;padding:9px 15px;border-radius:30px;border:1px solid var(--ligne);
+  background:transparent;color:var(--os-doux);font-family:'Figtree';font-size:13px;font-weight:500;cursor:pointer;
+  transition:.22s;white-space:nowrap}
+.cat.on{background:var(--braise);border-color:var(--braise);color:#231206;font-weight:600}
+
+/* ── BANNIÈRES MISE EN AVANT ── */
+.spot{margin:16px 18px 0;border-radius:18px;padding:16px 18px;position:relative;overflow:hidden;
+  border:1px solid var(--ligne)}
+.spot.terrasse{background:linear-gradient(120deg,rgba(78,140,90,.22),rgba(34,26,22,.6))}
+.spot.traiteur{background:linear-gradient(120deg,rgba(232,148,74,.20),rgba(34,26,22,.6))}
+.spot .eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--safran);margin-bottom:5px}
+.spot.terrasse .eyebrow{color:#8FCB9B}
+.spot h3{font-size:19px;font-weight:600;margin-bottom:4px;letter-spacing:-.3px}
+.spot p{font-size:12.5px;color:var(--os-doux);line-height:1.5}
+.spot .go{margin-top:11px;display:inline-block;font-size:12px;font-weight:600;padding:8px 14px;border-radius:24px;
+  background:var(--os);color:#231206;text-decoration:none}
+
+/* ── SECTION ── */
+.sec{padding:26px 18px 4px}
+.sec-h{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+.sec-h h2{font-size:22px;font-weight:600;letter-spacing:-.4px}
+.sec-h em{font-style:normal;font-size:11px;color:var(--os-doux);letter-spacing:1px;text-transform:uppercase}
+
+/* ── GRILLE PLATS ── */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+@media(min-width:620px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--surface);border-radius:16px;overflow:hidden;border:1px solid var(--ligne);
+  display:flex;flex-direction:column;transition:.25s}
+.card:active{transform:scale(.985)}
+.ph{aspect-ratio:1;position:relative;display:grid;place-items:center;font-size:44px;
+  background:radial-gradient(circle at 50% 42%,#4A3524,#2A1E17 72%)}
+.ph .plate{position:absolute;width:72%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 42% 36%,rgba(242,235,225,.10),transparent 62%);
+  border:1px solid rgba(242,235,225,.07)}
+.ph span{position:relative;filter:drop-shadow(0 6px 14px rgba(0,0,0,.5))}
+.tagpop{position:absolute;top:9px;left:9px;font-size:9.5px;font-weight:600;letter-spacing:.4px;
+  padding:4px 9px;border-radius:20px;background:rgba(232,148,74,.92);color:#231206}
+.tagpop.vert{background:rgba(78,140,90,.92);color:#EAF6EC}
+.body{padding:11px 12px 12px;display:flex;flex-direction:column;flex:1}
+.body h4{font-family:'Figtree';font-size:13.5px;font-weight:600;line-height:1.25;margin-bottom:3px}
+.body .meta{font-size:10.5px;color:var(--os-doux);margin-bottom:9px}
+.body .price{font-family:'Bricolage Grotesque';font-size:16px;font-weight:600;color:var(--safran);margin-bottom:10px}
+.acts{display:flex;gap:7px;margin-top:auto}
+.btn{flex:1;border:none;border-radius:10px;padding:9px 6px;font-family:'Figtree';font-size:12px;font-weight:600;
+  cursor:pointer;transition:.2s}
+.btn-voir{background:transparent;border:1px solid rgba(242,235,225,.24);color:var(--os)}
+.btn-voir:active{background:rgba(242,235,225,.08)}
+.btn-add{background:var(--braise);color:#231206;transition:background .25s,color .25s}
+.btn-add:active{background:var(--safran)}
+.btn-add.added{background:var(--terrain);color:#fff}
+.btn-add.added:active{background:#5EA46C}
+
+/* ── FICHE PLAT (MODALE) ── */
+.veil{position:fixed;inset:0;z-index:80;background:rgba(10,7,5,.82);backdrop-filter:blur(4px);
+  display:none;align-items:flex-end;justify-content:center}
+.veil.on{display:flex}
+.sheet{background:var(--surface);width:100%;max-width:520px;max-height:94vh;border-radius:22px 22px 0 0;
+  overflow-y:auto;position:relative;animation:up .32s cubic-bezier(.2,.8,.3,1);padding-bottom:88px}
+@media(min-width:620px){.veil{align-items:center}.sheet{border-radius:22px;max-height:88vh}}
+@keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.close{position:absolute;top:13px;right:13px;z-index:5;width:34px;height:34px;border-radius:50%;border:none;
+  background:rgba(23,18,15,.72);backdrop-filter:blur(8px);color:var(--os);font-size:19px;cursor:pointer;line-height:1}
+.hero-ph{aspect-ratio:4/3;position:relative;display:grid;place-items:center;font-size:112px;
+  background:radial-gradient(circle at 50% 44%,#553D28,#2A1E17 74%)}
+.hero-ph .plate{position:absolute;width:64%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 42% 36%,rgba(242,235,225,.12),transparent 62%);
+  border:1px solid rgba(242,235,225,.08)}
+.hero-ph span{position:relative;filter:drop-shadow(0 14px 30px rgba(0,0,0,.55))}
+.sheet-body{padding:20px 20px 0}
+.sheet-body h3{font-size:25px;font-weight:600;letter-spacing:-.5px;line-height:1.15;margin-bottom:9px}
+.compo{font-size:14px;line-height:1.65;color:#DCD2C6;margin-bottom:18px}
+.lbl{font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--os-doux);margin-bottom:9px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.chip{display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:24px;
+  border:1px solid var(--ligne);background:var(--surface2);font-size:12px}
+.facts{display:flex;gap:20px;padding:14px 0;border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne);margin-bottom:18px}
+.fact b{display:block;font-family:'Bricolage Grotesque';font-size:17px;font-weight:600;color:var(--os)}
+.fact span{font-size:10.5px;color:var(--os-doux)}
+
+/* barre d'ajout collée en bas de la fiche */
+.sheet-bar{position:absolute;bottom:0;left:0;right:0;background:rgba(34,26,22,.97);backdrop-filter:blur(12px);
+  border-top:1px solid var(--ligne);padding:13px 18px;display:flex;align-items:center;gap:12px}
+.sheet-bar .nm{flex:1;min-width:0}
+.sheet-bar .nm p{font-size:12px;color:var(--os-doux);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sheet-bar .nm b{font-family:'Bricolage Grotesque';font-size:19px;font-weight:600;color:var(--safran)}
+.qty{display:flex;align-items:center;gap:11px;background:var(--surface2);border-radius:26px;padding:7px 12px}
+.qty button{background:none;border:none;color:var(--os);font-size:17px;cursor:pointer;line-height:1;width:16px}
+.qty b{font-size:14px;min-width:14px;text-align:center}
+.sheet-bar .add{background:var(--braise);color:#231206;border:none;border-radius:26px;padding:13px 22px;
+  font-family:'Figtree';font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap}
+
+/* ── PANIER ── */
+.cart{position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(34,26,22,.97);backdrop-filter:blur(14px);
+  border-top:1px solid var(--ligne);padding:13px 18px;display:none;align-items:center;gap:13px}
+.cart.on{display:flex}
+.cart .info{flex:1}
+.cart .info span{font-size:11px;color:var(--os-doux);display:block}
+.cart .info b{font-family:'Bricolage Grotesque';font-size:20px;font-weight:600;color:var(--safran)}
+.cart .voirp{background:var(--braise);color:#231206;border:none;border-radius:26px;padding:13px 20px;
+  font-family:'Figtree';font-weight:700;font-size:13.5px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.toast{position:fixed;bottom:104px;left:50%;transform:translateX(-50%) translateY(14px);z-index:70;
+  background:var(--os);color:#231206;padding:11px 20px;border-radius:26px;font-size:13px;font-weight:600;
+  opacity:0;transition:.3s;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%)}
+footer{text-align:center;padding:32px 18px 10px;font-size:10.5px;color:#5C5148;line-height:1.7}
+footer b{color:var(--braise)}
+
+/* ── ÉCRAN D'ACCUEIL (au scan du QR) ── */
+.splash{position:fixed;inset:0;z-index:200;background:var(--charbon);
+  display:grid;place-items:center;overflow:hidden;
+  transition:opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1)}
+.splash.out{opacity:0;transform:translateY(-14px);pointer-events:none}
+.splash .braises{position:absolute;inset:0;pointer-events:none}
+.splash .braise-pt{position:absolute;bottom:-10px;width:4px;height:4px;border-radius:50%;
+  background:var(--braise);opacity:0;animation:monte 3.4s ease-out infinite}
+@keyframes monte{0%{opacity:0;transform:translateY(0) scale(.5)}12%{opacity:.85}
+  70%{opacity:.5}100%{opacity:0;transform:translateY(-58vh) scale(.2)}}
+.splash .halo{position:absolute;width:min(88vw,420px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,148,74,.20),transparent 66%);
+  animation:respire 3.2s ease-in-out infinite}
+@keyframes respire{0%,100%{transform:scale(.92);opacity:.75}50%{transform:scale(1.06);opacity:1}}
+.splash .inner{position:relative;text-align:center;padding:0 28px}
+.splash .mk{position:relative;width:78px;height:78px;border-radius:21px;margin:0 auto 22px;
+  background:linear-gradient(145deg,var(--safran),var(--braise) 58%,#B9642C);
+  display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:35px;color:#2A1608;
+  opacity:0;transform:scale(.55) rotate(-8deg);
+  animation:pose .85s cubic-bezier(.2,1.3,.4,1) .12s forwards}
+@keyframes pose{to{opacity:1;transform:none}}
+.splash .mk::after{content:"";position:absolute;inset:0;border-radius:21px;
+  border:2px solid var(--braise);opacity:0;animation:onde 1.7s ease-out .7s infinite}
+@keyframes onde{0%{opacity:.65;transform:scale(1)}100%{opacity:0;transform:scale(1.85)}}
+.splash h1{font-family:'Bricolage Grotesque';font-size:31px;font-weight:600;letter-spacing:-.6px;
+  margin-bottom:9px;line-height:1.12;color:var(--os)}
+.splash h1 i{font-style:normal;display:inline-block;opacity:0;transform:translateY(16px);
+  animation:leve .55s cubic-bezier(.2,.9,.3,1) forwards}
+@keyframes leve{to{opacity:1;transform:none}}
+.splash .sous{font-size:13px;letter-spacing:3.4px;text-transform:uppercase;color:var(--safran);
+  opacity:0;animation:fadein .6s ease .95s forwards}
+.splash .table{margin-top:26px;font-size:14px;color:var(--os-doux);
+  opacity:0;animation:fadein .6s ease 1.2s forwards}
+.splash .table b{color:var(--os);font-weight:600}
+@keyframes fadein{to{opacity:1}}
+.splash .fil{width:132px;height:2px;background:rgba(242,235,225,.12);border-radius:2px;
+  margin:30px auto 0;overflow:hidden;opacity:0;animation:fadein .4s ease 1.15s forwards}
+.splash .fil i{display:block;height:100%;width:0;border-radius:2px;
+  background:linear-gradient(90deg,var(--safran),var(--braise));
+  animation:remplir 1.4s cubic-bezier(.4,0,.2,1) 1.25s forwards}
+@keyframes remplir{to{width:100%}}
+.splash .skip{position:absolute;bottom:34px;left:0;right:0;font-size:11.5px;color:#6B6058;
+  letter-spacing:1.4px;text-transform:uppercase;opacity:0;animation:fadein .5s ease 1.7s forwards}
+.app{opacity:0;transform:translateY(10px)}
+.app.in{opacity:1;transform:none;transition:opacity .65s ease, transform .65s cubic-bezier(.2,.8,.3,1)}
+
+/* ── avis Google ── */
+.avisG{margin:34px 16px 26px;padding:26px 20px;text-align:center;background:var(--surface);
+  border:1px solid var(--ligne);border-radius:18px}
+.avisG .ag-stars{color:var(--safran);font-size:21px;letter-spacing:4px;margin-bottom:8px}
+.avisG b{font-family:'Bricolage Grotesque';font-size:18px;display:block;margin-bottom:5px}
+.avisG p{font-size:13px;color:var(--os-doux);margin-bottom:16px}
+.avisG .ag-btn{display:inline-block;background:var(--braise);color:#231206;text-decoration:none;
+  font-weight:700;font-size:13.5px;padding:12px 22px;border-radius:24px}
+.avisG .ag-btn:active{background:var(--safran)}
+
+/* ── feux d'artifice du splash ── */
+.splash .artifices{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.splash .fusee{position:absolute;bottom:-6px;width:3px;height:14px;border-radius:2px;
+  background:linear-gradient(to top,transparent,var(--c));
+  animation:fusee var(--tm) cubic-bezier(.3,.6,.4,1) var(--del) forwards;opacity:0}
+@keyframes fusee{0%{opacity:0;transform:translateY(0)}8%{opacity:1}
+  92%{opacity:1}100%{opacity:0;transform:translateY(var(--haut))}}
+.splash .burst{position:absolute;width:0;height:0;opacity:0;
+  animation:burstOn .1s linear var(--del) forwards}
+@keyframes burstOn{to{opacity:1}}
+.splash .pt{position:absolute;left:-2px;top:-2px;width:4px;height:4px;border-radius:50%;
+  background:var(--c);box-shadow:0 0 8px 1px var(--c);
+  animation:eclat var(--tv) cubic-bezier(.1,.6,.4,1) var(--del) forwards;opacity:0}
+@keyframes eclat{
+  0%{opacity:0;transform:translate(0,0) scale(1)}
+  6%{opacity:1}
+  60%{opacity:.9}
+  100%{opacity:0;transform:translate(var(--dx),calc(var(--dy) + 26px)) scale(.25)}
+}
+@media(prefers-reduced-motion:reduce){
+  .splash *{animation-duration:.01s!important;animation-delay:0s!important}
+  .splash .braises,.splash .halo,.splash .artifices{display:none}
+  .app{transition:none}
+}
+
+/* ── TUNNEL DE COMMANDE ── */
+.ck{position:fixed;inset:0;z-index:120;background:rgba(10,7,5,.84);backdrop-filter:blur(5px);
+  display:none;align-items:flex-end;justify-content:center}
+.ck.on{display:flex}
+.ck-sheet{background:var(--surface);width:100%;max-width:520px;max-height:94vh;overflow-y:auto;
+  border-radius:22px 22px 0 0;padding:22px 20px 28px;animation:up .32s cubic-bezier(.2,.8,.3,1)}
+@media(min-width:620px){.ck{align-items:center}.ck-sheet{border-radius:22px;max-height:90vh}}
+.ck-h{display:flex;align-items:center;gap:12px;margin-bottom:5px}
+.ck-h h3{font-family:'Bricolage Grotesque';font-size:21px;font-weight:600;letter-spacing:-.3px;flex:1}
+.ck-h button{background:none;border:none;color:var(--os-doux);font-size:23px;cursor:pointer;line-height:1}
+.ck-sub{font-size:12.5px;color:var(--os-doux);margin-bottom:18px;line-height:1.5}
+
+/* choix du mode */
+.modes{display:grid;gap:11px;margin-bottom:6px}
+@property --angM{syntax:'<angle>';inherits:false;initial-value:0deg}
+.mode{display:flex;align-items:center;gap:14px;padding:17px 16px;border-radius:16px;cursor:pointer;
+  border:2px solid transparent;
+  background:linear-gradient(var(--surface2),var(--surface2)) padding-box,
+    conic-gradient(from var(--angM),#E8944A,#F2C46B 22%,#4E8C5A 46%,#D0562E 72%,#E8944A) border-box;
+  transition:.22s;text-align:left;width:100%;
+  font-family:'Figtree';color:var(--os);position:relative;overflow:hidden;
+  animation:tourneBord 3.8s linear infinite, modeZoom 2.8s ease-in-out infinite;will-change:transform}
+.mode.liv{animation-delay:1.9s,1.4s}
+.mode:active{animation-play-state:paused,paused;transform:scale(.97)}
+.mode.sel{background:linear-gradient(#2A1B10,#2A1B10) padding-box,
+  linear-gradient(var(--braise),var(--braise)) border-box;animation:none}
+@keyframes tourneBord{to{--angM:360deg}}
+@keyframes modeZoom{0%,100%{transform:scale(1)}50%{transform:scale(1.016)}}
+/* un reflet lumineux balaie chaque carte, en alternance (jamais les deux ensemble) */
+.mode::after{content:"";position:absolute;top:-40%;bottom:-40%;left:-30%;width:26%;
+  background:linear-gradient(100deg,transparent,rgba(242,235,225,.075) 45%,rgba(242,196,107,.12) 55%,transparent);
+  transform:skewX(-18deg);animation:reflet 5.2s ease-in-out infinite;pointer-events:none}
+.mode.liv::after{animation-delay:2.6s}
+@keyframes reflet{0%{left:-30%}22%{left:120%}100%{left:120%}}
+.mode .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:23px;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(232,148,74,.20),rgba(242,196,107,.08))}
+.mode.liv .ico{background:linear-gradient(135deg,rgba(78,140,90,.22),rgba(157,203,155,.08))}
+/* les emojis vivent discrètement : l'assiette oscille, le scooter vibre */
+.mode .ico i{font-style:normal;display:inline-block;animation:icoSalle 3.4s ease-in-out infinite}
+.mode.liv .ico i{animation:icoMoto 2.6s ease-in-out infinite}
+@keyframes icoSalle{0%,74%,100%{transform:rotate(0)}80%{transform:rotate(-8deg)}
+  86%{transform:rotate(7deg)}92%{transform:rotate(-4deg)}}
+@keyframes icoMoto{0%,68%,100%{transform:translate(0,0)}
+  72%{transform:translate(-1px,-1.5px)}76%{transform:translate(1px,.5px)}
+  80%{transform:translate(-1px,-1px)}84%{transform:translate(1.5px,-1.5px)}88%{transform:translate(0,.5px)}}
+.mode .tx b{display:block;font-size:15px;font-weight:600;margin-bottom:2px}
+.mode .tx span{font-size:12.2px;color:var(--os-doux);line-height:1.4}
+
+/* formulaire */
+.fld{margin-bottom:13px}
+.fld label{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--os-doux);margin-bottom:6px}
+.fld input,.fld textarea,.fld select{width:100%;padding:13px 14px;background:var(--charbon);
+  border:1.5px solid var(--ligne);border-radius:12px;color:var(--os);font-family:'Figtree';font-size:14.5px;
+  outline:none;transition:.2s}
+.fld input:focus,.fld textarea:focus,.fld select:focus{border-color:var(--braise)}
+.fld textarea{resize:none;min-height:64px}
+.fld .hint{font-size:11px;color:#6B6058;margin-top:5px}
+.fld.tbl input{text-align:center;font-size:28px;font-weight:700;letter-spacing:6px;padding:16px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.seg{display:flex;gap:7px;margin-bottom:13px}
+.seg button{flex:1;padding:11px 6px;border-radius:11px;border:1.5px solid var(--ligne);background:var(--charbon);
+  color:var(--os-doux);font-family:'Figtree';font-size:12.5px;font-weight:600;cursor:pointer;transition:.2s}
+.seg button.on{background:var(--braise);border-color:var(--braise);color:#231206}
+
+/* recap panier */
+.recap{background:var(--charbon);border-radius:14px;padding:14px 15px;margin-bottom:16px}
+.recap .li{display:flex;justify-content:space-between;font-size:12.8px;padding:4px 0;color:#D6CCC0}
+.recap .tt{display:flex;justify-content:space-between;margin-top:9px;padding-top:9px;
+  border-top:1px solid var(--ligne);font-size:15px;font-weight:600}
+.recap .tt b{font-family:'Bricolage Grotesque';color:var(--safran)}
+
+.ck-go{width:100%;padding:16px;border:none;border-radius:15px;font-family:'Figtree';font-size:15.5px;
+  font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--braise),#D07A2E);color:#231206;
+  display:flex;align-items:center;justify-content:center;gap:9px;margin-top:4px}
+.ck-go:disabled{opacity:.45;cursor:not-allowed}
+.ck-back{background:none;border:none;color:var(--os-doux);font-family:'Figtree';font-size:13px;
+  cursor:pointer;padding:12px;width:100%;margin-top:4px}
+
+/* ── ANIMATION MODE SUPER ── */
+.sup{position:fixed;inset:0;z-index:300;background:var(--charbon);display:none;
+  align-items:center;justify-content:center;overflow:hidden}
+.sup.on{display:flex}
+.sup .streaks{position:absolute;inset:0;pointer-events:none}
+.sup .streak{position:absolute;height:2px;border-radius:2px;left:-40%;
+  background:linear-gradient(90deg,transparent,var(--braise),transparent);
+  animation:file .62s linear infinite}
+@keyframes file{0%{transform:translateX(0)}100%{transform:translateX(240%)}}
+.sup .glowpad{position:absolute;width:min(90vw,440px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,148,74,.22),transparent 65%);animation:respire 1.5s ease-in-out infinite}
+
+.sup .box{position:relative;text-align:center;padding:0 28px;width:100%;max-width:420px}
+.sup .rider{font-size:76px;display:inline-block;
+  animation:arrive .75s cubic-bezier(.2,1.2,.4,1) forwards, tremble .32s ease-in-out .75s infinite}
+@keyframes arrive{from{opacity:0;transform:translateX(-190px) rotate(-14deg)}to{opacity:1;transform:none}}
+@keyframes tremble{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+.sup .eclair{position:absolute;top:14px;font-size:27px;opacity:0;animation:zap 1s ease-in-out infinite}
+.sup .eclair.g{left:12%;animation-delay:.15s}
+.sup .eclair.d{right:12%;animation-delay:.55s}
+@keyframes zap{0%,100%{opacity:0;transform:scale(.7)}45%{opacity:1;transform:scale(1.15)}}
+
+.sup h2{font-family:'Bricolage Grotesque';font-size:29px;font-weight:800;letter-spacing:-.6px;
+  margin:16px 0 6px;opacity:0;animation:flash .5s cubic-bezier(.2,1.4,.4,1) .5s forwards;
+  background:linear-gradient(92deg,var(--safran),var(--braise),var(--safran));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  background-size:220% auto;animation-name:flash,defile}
+@keyframes flash{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:none}}
+@keyframes defile{to{background-position:220% center}}
+.sup h2{animation:flash .5s cubic-bezier(.2,1.4,.4,1) .5s forwards, defile 2.4s linear .9s infinite}
+.sup .tag{font-size:12.5px;letter-spacing:2.6px;text-transform:uppercase;color:var(--os-doux);
+  opacity:0;animation:fadein .5s ease .85s forwards}
+
+.sup .steps{margin-top:30px;display:grid;gap:11px;text-align:left}
+.sup .step{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:14px;
+  background:var(--surface);border:1px solid var(--ligne);opacity:.32;transform:translateX(-8px);
+  transition:.42s cubic-bezier(.2,.8,.3,1)}
+.sup .step.done{opacity:1;transform:none;border-color:rgba(78,140,90,.45);background:#16211A}
+.sup .step .p{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;
+  background:var(--surface2);font-size:13px;transition:.3s}
+.sup .step.done .p{background:var(--terrain);color:#fff}
+.sup .step span{font-size:13.5px;font-weight:500}
+.sup .eta{margin-top:22px;font-size:13px;color:var(--os-doux);opacity:0;transition:opacity .5s}
+.sup .eta.show{opacity:1}
+.sup .eta b{color:var(--safran);font-family:'Bricolage Grotesque';font-size:17px}
+
+/* écran final */
+.sup .fini{position:absolute;inset:0;background:var(--charbon);display:none;
+  flex-direction:column;align-items:center;justify-content:center;padding:0 30px;text-align:center}
+.sup .fini.on{display:flex;animation:fadein .45s ease forwards}
+.sup .fini .rond{width:96px;height:96px;border-radius:50%;background:var(--terrain);display:grid;
+  place-items:center;font-size:47px;margin-bottom:22px;animation:pop .6s cubic-bezier(.2,1.5,.4,1)}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:none;opacity:1}}
+.sup .fini h3{font-family:'Bricolage Grotesque';font-size:26px;font-weight:600;margin-bottom:9px}
+.sup .fini p{font-size:14px;color:var(--os-doux);line-height:1.6;margin-bottom:26px}
+.sup .fini .wa{background:#25D366;color:#06331A;border:none;border-radius:28px;padding:15px 28px;
+  font-family:'Figtree';font-weight:700;font-size:14.5px;cursor:pointer;display:flex;align-items:center;gap:9px}
+@media(prefers-reduced-motion:reduce){.sup *{animation-duration:.01s!important}}
+
+/* ── panier éditable ── */
+.pn{display:grid;gap:10px;margin-bottom:16px}
+.pn-li{display:flex;align-items:center;gap:12px;background:var(--charbon);border-radius:14px;padding:11px 12px;
+  border:1px solid var(--ligne)}
+.pn-li .em{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:20px;flex-shrink:0;
+  background:radial-gradient(circle at 50% 42%,#4A3524,#2A1E17 72%)}
+.pn-li .in{flex:1;min-width:0}
+.pn-li .in b{display:block;font-size:13.5px;font-weight:600;margin-bottom:2px}
+.pn-li .in span{font-size:12px;color:var(--os-doux)}
+.pn-li .in i{font-style:normal;color:var(--safran);font-weight:600}
+.pnq{display:flex;align-items:center;gap:10px;background:var(--surface2);border-radius:22px;padding:6px 10px;flex-shrink:0}
+.pnq button{background:none;border:none;color:var(--os);font-size:18px;cursor:pointer;line-height:1;width:15px;
+  font-family:'Figtree';font-weight:600}
+.pnq button.del{color:#E06B6B}
+.pnq b{font-size:14px;min-width:15px;text-align:center}
+.pn-vide{text-align:center;padding:34px 10px;color:var(--os-doux);font-size:14px}
+.pn-tt{display:flex;justify-content:space-between;align-items:center;padding:14px 15px;background:var(--charbon);
+  border-radius:14px;margin-bottom:16px}
+.pn-tt span{font-size:13px;color:var(--os-doux)}
+.pn-tt b{font-family:'Bricolage Grotesque';font-size:24px;font-weight:600;color:var(--safran)}
+
+/* ── ANIMATION COUP DE FEU (sur place) ── */
+.feu{position:fixed;inset:0;z-index:300;background:var(--charbon);display:none;
+  align-items:center;justify-content:center;overflow:hidden}
+.feu.on{display:flex}
+/* foyer : halo de chaleur + lit de braises */
+.feu .flammes{position:absolute;left:0;right:0;bottom:0;height:54vh;pointer-events:none}
+.feu .chaleur{position:absolute;left:0;right:0;bottom:0;height:40vh;
+  background:linear-gradient(to top,rgba(200,86,16,.32),rgba(200,86,16,.08) 55%,transparent);
+  animation:chaleur 1.15s ease-in-out infinite}
+@keyframes chaleur{0%,100%{opacity:.7}36%{opacity:1}64%{opacity:.82}}
+.feu .lit{position:absolute;bottom:-3px;width:9px;height:9px;border-radius:50%;
+  background:radial-gradient(circle,#FFE9B8,#E8944A 55%,transparent 78%);
+  filter:blur(1px);animation:lit 1.3s ease-in-out infinite}
+@keyframes lit{0%,100%{opacity:.3;transform:scale(.75)}50%{opacity:1;transform:scale(1.3)}}
+/* langue de flamme : corps + coeur clair, montée irrégulière + léchée latérale */
+.feu .fl{position:absolute;bottom:-26px;transform-origin:50% 100%;opacity:0;
+  animation:monteFl var(--dur) cubic-bezier(.32,.05,.44,1) var(--del) infinite}
+.feu .fl i{position:absolute;inset:0;display:block;border-radius:50% 50% 44% 44%/68% 68% 32% 32%;
+  background:linear-gradient(to top,#C85410 4%,#E8944A 34%,#F2C46B 60%,rgba(242,196,107,0) 88%);
+  filter:blur(5px);mix-blend-mode:screen;
+  animation:leche calc(var(--dur)*.29) ease-in-out var(--del) infinite alternate}
+.feu .fl i::after{content:"";position:absolute;left:27%;right:27%;top:32%;bottom:6%;
+  border-radius:inherit;background:linear-gradient(to top,#FFF3D0,#F2C46B 55%,transparent 92%);
+  filter:blur(3px)}
+@keyframes monteFl{
+  0%{opacity:0;transform:translateY(4vh) scale(.55,.4)}
+  10%{opacity:var(--op)}
+  40%{transform:translateY(-13vh) scale(.92,1.05) rotate(var(--rot))}
+  68%{opacity:calc(var(--op)*.55)}
+  100%{opacity:0;transform:translateY(-40vh) scale(.28,1.5) rotate(calc(var(--rot)*-1))}
+}
+@keyframes leche{from{transform:skewX(-7deg) scaleX(.85)}to{transform:skewX(7deg) scaleX(1.12)}}
+/* étincelles portées par le tirage, avec scintillement */
+.feu .etin{position:absolute;width:3px;height:3px;border-radius:50%;
+  background:var(--safran);box-shadow:0 0 6px 1px rgba(242,196,107,.85);
+  opacity:0;animation:etincelle var(--dur) cubic-bezier(.2,.4,.6,1) var(--del) infinite}
+@keyframes etincelle{
+  0%{opacity:0;transform:translate(0,0) scale(1)}
+  12%{opacity:1}
+  50%{opacity:.85;transform:translate(calc(var(--dx)*.4),-20vh) scale(.75)}
+  70%{opacity:.2}
+  82%{opacity:.75}
+  100%{opacity:0;transform:translate(var(--dx),-48vh) scale(.2)}
+}
+.feu .glowpad{position:absolute;width:min(92vw,460px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,148,74,.24),transparent 66%);
+  animation:respire 1.35s ease-in-out infinite}
+
+.feu .box{position:relative;text-align:center;padding:0 28px;width:100%;max-width:420px}
+/* scène du chef : il aiguise ses couteaux, puis passe aux fourneaux */
+.feu .scene{position:relative;height:116px;display:flex;align-items:flex-end;justify-content:center}
+.feu .chef{font-size:78px;line-height:1;display:inline-block;
+  animation:entreChef .7s cubic-bezier(.2,1.25,.4,1) forwards, cadence .56s ease-in-out .7s infinite}
+@keyframes entreChef{from{opacity:0;transform:translateY(46px) scale(.75)}to{opacity:1;transform:none}}
+@keyframes cadence{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+/* les deux couteaux qui s'aiguisent l'un contre l'autre */
+.feu .knife{position:absolute;top:4px;font-size:34px;opacity:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,.55))}
+.feu .knife.g{left:50%;margin-left:-54px;
+  animation:app .3s ease .55s forwards, aigG .56s cubic-bezier(.5,0,.35,1) .85s infinite}
+.feu .knife.d{left:50%;margin-left:16px;
+  animation:app .3s ease .55s forwards, aigD .56s cubic-bezier(.5,0,.35,1) .85s infinite}
+@keyframes app{to{opacity:1}}
+@keyframes aigG{0%,100%{transform:translate(0,0) rotate(36deg)}
+  48%{transform:translate(24px,-16px) rotate(58deg)}}
+@keyframes aigD{0%,100%{transform:scaleX(-1) translate(0,0) rotate(36deg)}
+  48%{transform:scaleX(-1) translate(24px,-16px) rotate(58deg)}}
+/* l'étincelle au point de contact des lames */
+.feu .zapK{position:absolute;top:16px;left:50%;margin-left:-9px;width:18px;height:18px;opacity:0;
+  background:radial-gradient(circle,#FFF3D0 15%,var(--safran) 42%,transparent 70%);
+  border-radius:50%;animation:zapK .56s ease .85s infinite}
+.feu .zapK::before,.feu .zapK::after{content:"";position:absolute;left:50%;top:50%;background:#FFE9B8;border-radius:2px}
+.feu .zapK::before{width:16px;height:2px;margin:-1px 0 0 -8px}
+.feu .zapK::after{width:2px;height:16px;margin:-8px 0 0 -1px}
+@keyframes zapK{0%,30%,74%,100%{opacity:0;transform:scale(.4) rotate(0deg)}
+  48%{opacity:1;transform:scale(1.2) rotate(30deg)}}
+/* phase cuisson : les couteaux laissent place aux poêles */
+.feu .poele{position:absolute;top:8px;font-size:30px;opacity:0}
+.feu .poele.g{left:11%}.feu .poele.d{right:11%}
+.feu.cuisson .knife,.feu.cuisson .zapK{animation:none;opacity:0}
+.feu.cuisson .poele{animation:sautePoele 1.1s ease-in-out infinite}
+.feu.cuisson .poele.g{animation-delay:.15s}
+.feu.cuisson .poele.d{animation-delay:.6s}
+@keyframes sautePoele{0%,100%{opacity:0;transform:translateY(6px) rotate(-14deg)}
+  45%{opacity:1;transform:translateY(-8px) rotate(12deg)}}
+
+.feu h2{font-family:'Bricolage Grotesque';font-size:28px;font-weight:800;letter-spacing:-.6px;
+  margin:16px 0 6px;
+  background:linear-gradient(92deg,#F2C46B,#E8944A,#F2C46B);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  background-size:220% auto;opacity:0;
+  animation:flash .5s cubic-bezier(.2,1.4,.4,1) .48s forwards, defile 2.2s linear .9s infinite}
+.feu .tag{font-size:12.5px;letter-spacing:2.6px;text-transform:uppercase;color:var(--os-doux);
+  opacity:0;animation:fadein .5s ease .8s forwards}
+.feu .steps{margin-top:30px;display:grid;gap:11px;text-align:left}
+.feu .step{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:14px;
+  background:var(--surface);border:1px solid var(--ligne);opacity:.32;transform:translateX(-8px);
+  transition:.42s cubic-bezier(.2,.8,.3,1)}
+.feu .step.done{opacity:1;transform:none;border-color:rgba(232,148,74,.5);background:#251710}
+.feu .step .p{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;
+  background:var(--surface2);font-size:13px;transition:.3s}
+.feu .step.done .p{background:var(--braise);color:#231206}
+.feu .step span{font-size:13.5px;font-weight:500}
+.feu .eta{margin-top:22px;font-size:13px;color:var(--os-doux);opacity:0;transition:opacity .5s}
+.feu .eta.show{opacity:1}
+.feu .eta b{color:var(--safran);font-family:'Bricolage Grotesque';font-size:17px}
+.feu .fini{position:absolute;inset:0;background:var(--charbon);display:none;
+  flex-direction:column;align-items:center;justify-content:center;padding:0 30px;text-align:center}
+.feu .fini.on{display:flex;animation:fadein .45s ease forwards}
+.feu .fini h3{font-family:'Bricolage Grotesque';font-size:25px;font-weight:600;margin-bottom:9px}
+.feu .fini p{font-size:14px;color:var(--os-doux);line-height:1.65;margin-bottom:24px}
+.feu .fini .wa{background:#25D366;color:#06331A;border:none;border-radius:28px;padding:15px 26px;
+  font-family:'Figtree';font-weight:700;font-size:14.5px;cursor:pointer;display:flex;align-items:center;gap:9px}
+/* le bouton WhatsApp bat comme un coeur : zoom doux + onde qui s'échappe */
+.fini .wa{position:relative;animation:waPulse 1.6s ease-in-out .8s infinite;will-change:transform}
+.fini .wa::before{content:"";position:absolute;inset:-2px;border-radius:inherit;z-index:-1;
+  border:2px solid rgba(37,211,102,.65);opacity:0;animation:waOnde 1.6s ease-out .8s infinite}
+.fini .wa:active{animation-play-state:paused;transform:scale(.96)}
+@keyframes waPulse{0%,100%{transform:scale(1)}30%{transform:scale(1.045)}55%{transform:scale(1)}}
+@keyframes waOnde{0%,18%{opacity:0;transform:scale(1)}30%{opacity:.8}
+  100%{opacity:0;transform:scale(1.28,1.75)}}
+
+/* ── écran "dernière étape" (commun sur place / livraison) ── */
+.fini .pastille{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;
+  letter-spacing:.3px;padding:8px 14px;border-radius:30px;margin-bottom:20px;
+  background:rgba(232,148,74,.13);border:1px solid rgba(232,148,74,.55);color:var(--safran)}
+.fini .pastille .pt{width:8px;height:8px;border-radius:50%;background:var(--braise);
+  animation:respire 1.1s ease-in-out infinite}
+.fini .tel{font-size:44px;margin-bottom:14px;display:inline-block;animation:telSonne 1.6s ease-in-out .4s infinite}
+@keyframes telSonne{0%,100%{transform:rotate(0)}6%{transform:rotate(-9deg)}12%{transform:rotate(8deg)}
+  18%{transform:rotate(-6deg)}24%{transform:rotate(0)}}
+.fini h3 b{color:var(--safran)}
+.fini p b{color:var(--os)}
+.fini .hint{font-size:12.5px;color:var(--os-doux);margin-top:14px;line-height:1.5;max-width:300px}
+.fini .retour{margin-top:24px;background:none;border:none;color:var(--os-doux);font-family:'Figtree';
+  font-size:13px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+/* question au retour de WhatsApp */
+.fini .retourQ{display:none;margin-top:18px;padding:15px 16px;border-radius:15px;width:100%;max-width:320px;
+  background:var(--surface);border:1px solid rgba(232,148,74,.5);animation:pop .4s cubic-bezier(.2,1.3,.4,1)}
+.fini .retourQ.on{display:block}
+.fini .retourQ p{font-size:13.5px;color:var(--os);margin:0 0 12px;line-height:1.4}
+.fini .rbtns{display:flex;gap:9px;justify-content:center}
+.fini .rbtns .oui{flex:1;background:var(--braise);color:#231206;border:none;border-radius:22px;
+  padding:11px 14px;font-family:'Figtree';font-weight:700;font-size:13px;cursor:pointer}
+.fini .rbtns .non{background:none;border:1px solid var(--ligne);border-radius:22px;color:var(--os-doux);
+  padding:11px 14px;font-family:'Figtree';font-size:13px;cursor:pointer}
+@media(prefers-reduced-motion:reduce){.feu *,.sup *,.mode,.mode::after,.mode .ico i,.fini .wa,.fini .wa::before{animation-duration:.01s!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+
+<div class="splash" id="splash" onclick="entrer()">
+  <div class="halo"></div>
+  <div class="braises" id="braises"></div>
+  <div class="artifices" id="artifices"></div>
+  <div class="inner">
+    <div class="mk">M</div>
+    <h1 id="titreSplash"></h1>
+    <div class="sous">Abomey-Calavi · Bénin</div>
+    <div class="fil"><i></i></div>
+  </div>
+  <div class="skip">Touchez pour entrer</div>
+</div>
+
+<div class="app" id="app">
+<header class="top">
+  <div class="top-in">
+    <div class="mark">M</div>
+    <div class="brand">
+      <h1>Restaurant Maxence</h1>
+      <span>Godomey · Bénin</span>
+    </div>
+    <a class="site-link" href="index.html">Notre site ↗</a>
+  </div>
+  <div class="cats" id="cats"></div>
+</header>
+
+<div class="spot terrasse">
+  <div class="eyebrow">Ce soir sur grand écran</div>
+  <h3>La terrasse football</h3>
+  <p>Tous les grands matchs retransmis en plein air. Réservez votre table avant le coup d'envoi.</p>
+  <a class="go" href="reservation.html">Réserver une table</a>
+</div>
+
+<div class="spot traiteur">
+  <div class="eyebrow">Service traiteur</div>
+  <h3>Nous régalons vos événements</h3>
+  <p>Mariages, baptêmes, séminaires et réceptions d'entreprise. Recevez votre devis en quelques minutes.</p>
+  <a class="go" href="traiteur.html">Demander un devis</a>
+</div>
+
+<main id="menu"></main>
+
+<section class="avisG">
+  <div class="ag-stars">★★★★★</div>
+  <b>Vous avez aimé ? Dites-le sur Google</b>
+  <p>Votre avis aide Maxence à se faire connaître — merci !</p>
+  <a class="ag-btn" href="#" target="_blank" rel="noopener">Laisser un avis Google</a>
+</section>
+
+<footer>
+  Menu numérique réalisé par <b>NEXORA Marketing Digital</b><br>
+  Les photos des plats seront celles de votre établissement · Démonstration
+</footer>
+
+<div class="veil" id="veil"><div class="sheet" id="sheet"></div></div>
+
+<div class="cart" id="cart">
+  <div class="info"><span id="cartCount">0 article</span><b id="cartTotal">0 F</b></div>
+  <button class="voirp" onclick="ouvrirPanier()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    Voir mon panier
+  </button>
+</div>
+<div class="toast" id="toast">Ajouté à la commande</div>
+</div>
+
+<div class="ck" id="ck"><div class="ck-sheet" id="ckSheet"></div></div>
+
+
+<div class="feu" id="feu">
+  <div class="glowpad"></div>
+  <div class="flammes" id="flammes"></div>
+  <div class="box">
+    <div class="scene">
+      <span class="poele g">🍳</span><span class="poele d">🔥</span>
+      <span class="knife g">🔪</span><span class="knife d">🔪</span>
+      <span class="zapK"></span>
+      <div class="chef">👨‍🍳</div>
+    </div>
+    <h2 id="fTitre">VOTRE TICKET SE PRÉPARE</h2>
+    <div class="tag" id="fTag">Le chef aiguise ses couteaux</div>
+    <div class="steps">
+      <div class="step" id="ft0"><div class="p">1</div><span>Le chef aiguise ses couteaux</span></div>
+      <div class="step" id="ft1"><div class="p">2</div><span>Votre ticket de commande est prêt</span></div>
+      <div class="step" id="ft2"><div class="p">3</div><span id="ftTable">Table notée sur le ticket</span></div>
+    </div>
+    <div class="eta" id="fEta">Préparation habituelle : <b>15 – 20 min</b></div>
+  </div>
+  <div class="fini" id="fFini">
+    <div class="pastille"><span class="pt"></span><span id="fPastTxt">Commande pas encore envoyée</span></div>
+    <div class="tel">📲</div>
+    <h3>Dernière étape : <b>envoyez-la sur WhatsApp</b></h3>
+    <p>Le message est déjà rédigé pour vous — plats, quantités et total.<br>
+    Appuyez sur le bouton vert, puis sur <b>Envoyer ➤</b> dans WhatsApp :<br>
+    c'est ce message qui prévient la cuisine.</p>
+    <button class="wa" onclick="envoiWA()">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.5 14.4c-.3.6-1.3 1.1-1.8 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.7-4.4-3.9-.2-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4-.1.6.4.3.5.9 1.9.9 2 .1.1.1.3 0 .5-.1.2-.2.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 .9.8 1.6 1.1 2.3 1.4.3.1.4.1.6-.1.2-.2.7-.8.8-1 .2-.3.4-.2.6-.1.2.1 1.7.8 2 1 .2.1.4.2.5.3.1.1.1.6-.2 1.2Z"/></svg>
+      Ouvrir WhatsApp et envoyer
+    </button>
+    <div class="retourQ" id="fRetour">
+      <p>Vous revoilà ! Votre commande est-elle bien partie ?</p>
+      <div class="rbtns">
+        <button class="oui" onclick="celebrer()">Oui, envoyée ✓</button>
+        <button class="non" onclick="cacherRetour()">Pas encore</button>
+      </div>
+    </div>
+    <div class="hint">Tant que le message n'est pas envoyé, le restaurant ne reçoit pas votre commande.</div>
+    <button class="retour" onclick="fermerFeu()">Revenir au menu</button>
+  </div>
+</div>
+
+<div class="sup" id="sup">
+  <div class="glowpad"></div>
+  <div class="streaks" id="streaks"></div>
+  <div class="box">
+    <span class="eclair g">⚡</span><span class="eclair d">⚡</span>
+    <div class="rider">🛵</div>
+    <h2 id="sTitre">VOTRE TICKET SE PRÉPARE</h2>
+    <div class="tag" id="sTag">Vérification de l'adresse</div>
+    <div class="steps">
+      <div class="step" id="st0"><div class="p">1</div><span>Adresse de livraison vérifiée</span></div>
+      <div class="step" id="st1"><div class="p">2</div><span>Votre ticket de commande est prêt</span></div>
+      <div class="step" id="st2"><div class="p">3</div><span>Le livreur sera notifié à l'envoi</span></div>
+    </div>
+    <div class="eta" id="eta">Livraison estimée : <b>25 – 35 min</b></div>
+  </div>
+  <div class="fini" id="fini">
+    <div class="pastille"><span class="pt"></span><span id="sPastTxt">Commande pas encore envoyée</span></div>
+    <div class="tel">📲</div>
+    <h3>Dernière étape : <b>envoyez-la sur WhatsApp</b></h3>
+    <p>Le message est déjà rédigé pour vous — plats, quantités et total.<br>
+    Appuyez sur le bouton vert, puis sur <b>Envoyer ➤</b> dans WhatsApp :<br>
+    c'est ce message qui lance la livraison.</p>
+    <button class="wa" onclick="envoiWA()">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.5 14.4c-.3.6-1.3 1.1-1.8 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.7-4.4-3.9-.2-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4-.1.6.4.3.5.9 1.9.9 2 .1.1.1.3 0 .5-.1.2-.2.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 .9.8 1.6 1.1 2.3 1.4.3.1.4.1.6-.1.2-.2.7-.8.8-1 .2-.3.4-.2.6-.1.2.1 1.7.8 2 1 .2.1.4.2.5.3.1.1.1.6-.2 1.2Z"/></svg>
+      Ouvrir WhatsApp et envoyer
+    </button>
+    <div class="retourQ" id="sRetour">
+      <p>Vous revoilà ! Votre commande est-elle bien partie ?</p>
+      <div class="rbtns">
+        <button class="oui" onclick="celebrer()">Oui, envoyée ✓</button>
+        <button class="non" onclick="cacherRetour()">Pas encore</button>
+      </div>
+    </div>
+    <div class="hint">Tant que le message n'est pas envoyé, le restaurant ne reçoit pas votre commande.</div>
+    <button class="retour" onclick="fermerFeu()">Revenir au menu</button>
+  </div>
+</div>
+
+
+<script>
+
+
+// ── onglets synchronisés au défilement ──
+(function(){
+  let verrou = false;
+  const btns = () => Array.from(document.querySelectorAll('.cat'));
+  document.querySelectorAll('.cat').forEach((b,i)=>{
+    b.onclick = ()=>{
+      verrou = true;
+      btns().forEach(x=>x.classList.remove('on')); b.classList.add('on');
+      document.getElementById('sec'+i).scrollIntoView({behavior:'smooth',block:'start'});
+      setTimeout(()=>verrou=false, 700);
+    };
+  });
+  const secs = () => Array.from(document.querySelectorAll('.sec'));
+  function spy(){
+    if(verrou) return;
+    const haut = document.querySelector('.top').offsetHeight + 20;
+    let actif = 0;
+    secs().forEach((sc,i)=>{ if(sc.getBoundingClientRect().top <= haut + 40) actif = i; });
+    const bs = btns();
+    if(bs[actif] && !bs[actif].classList.contains('on')){
+      bs.forEach(x=>x.classList.remove('on'));
+      bs[actif].classList.add('on');
+      const c = document.getElementById('cats');
+      const b = bs[actif];
+      c.scrollTo({left: b.offsetLeft - c.clientWidth/2 + b.offsetWidth/2, behavior:'smooth'});
+    }
+  }
+  let t;
+  window.addEventListener('scroll', ()=>{ clearTimeout(t); t=setTimeout(spy,60); }, {passive:true});
+})();
+
+// ── écran d'accueil ──
+(function(){
+  const nom = "Restaurant Maxence";
+  document.getElementById('titreSplash').innerHTML = nom.split('').map((c,i)=>
+    `<i style="animation-delay:${.42 + i*.035}s">${c===' '?'&nbsp;':c}</i>`).join('');
+  const br = document.getElementById('braises');
+  for(let i=0;i<14;i++){
+    const d=document.createElement('div'); d.className='braise-pt';
+    d.style.left = (6 + Math.random()*88)+'%';
+    d.style.animationDelay = (Math.random()*3.2)+'s';
+    d.style.animationDuration = (2.6+Math.random()*1.8)+'s';
+    d.style.opacity = 0;
+    br.appendChild(d);
+  }
+  // feux d'artifice : 4 fusées qui montent puis éclatent
+  const art = document.getElementById('artifices');
+  const COULEURS = ['#F2C46B','#E8944A','#D0562E','#9DCB9B'];
+  const TIRS = [
+    {x:20, haut:62, del:.55}, {x:78, haut:70, del:1.05},
+    {x:42, haut:78, del:1.65}, {x:64, haut:58, del:2.25}
+  ];
+  TIRS.forEach(t=>{
+    const c = COULEURS[Math.floor(Math.random()*COULEURS.length)];
+    const montee = .55;
+    // la fusée
+    const f = document.createElement('div'); f.className='fusee';
+    f.style.left = t.x+'%';
+    f.style.setProperty('--c', c);
+    f.style.setProperty('--haut', '-'+t.haut+'vh');
+    f.style.setProperty('--tm', montee+'s');
+    f.style.setProperty('--del', t.del+'s');
+    art.appendChild(f);
+    // la gerbe à l'apogée
+    const b = document.createElement('div'); b.className='burst';
+    b.style.left = t.x+'%';
+    b.style.top = 'calc(100% - '+t.haut+'vh)';
+    b.style.setProperty('--del', (t.del+montee)+'s');
+    const n = 16 + Math.floor(Math.random()*6);
+    for(let i=0;i<n;i++){
+      const a = (i/n)*Math.PI*2 + Math.random()*.3;
+      const r = 34 + Math.random()*46;
+      const pt = document.createElement('i'); pt.className='pt';
+      pt.style.setProperty('--c', Math.random()<.25 ? '#FFF3D0' : c);
+      pt.style.setProperty('--dx', Math.cos(a)*r+'px');
+      pt.style.setProperty('--dy', Math.sin(a)*r+'px');
+      pt.style.setProperty('--tv', (0.9+Math.random()*.5)+'s');
+      pt.style.setProperty('--del', (t.del+montee+Math.random()*.06)+'s');
+      b.appendChild(pt);
+    }
+    art.appendChild(b);
+  });
+  setTimeout(entrer, 3400);
+})();
+let entre=false;
+function entrer(){
+  if(entre) return; entre=true;
+  document.getElementById('splash').classList.add('out');
+  document.getElementById('app').classList.add('in');
+  setTimeout(()=>{ const sp=document.getElementById('splash'); if(sp) sp.remove(); }, 800);
+}
+
+const CARTE = [
+  { cat:"Petit déjeuner", plats:[
+    {n:"Omelette complète", em:"🍳", g:"250 g", p:1500, tag:"Matin", d:"Omelette de trois œufs, oignons frais, tomates, poivron vert, servie avec pain artisanal grillé et une portion de haricots à l'huile rouge.", inc:["Pain grillé","Café ou thé"], kcal:420, prot:22, lip:28, gluc:24},
+    {n:"Bouillie & beignets", em:"🥣", g:"1 bol + 5 pcs", p:1000, tag:"Matin", d:"Bouillie de mil onctueuse relevée au gingembre et à la muscade, accompagnée de cinq beignets de haricot dorés à la demande.", inc:["Sucre à part"], kcal:380, prot:9, lip:12, gluc:58},
+    {n:"Pain omelette express", em:"🥪", g:"180 g", p:1000, tag:"", d:"Demi-baguette garnie d'une omelette aux oignons et à la tomate, mayonnaise maison et une pointe de piment doux. Prêt en cinq minutes.", inc:["Sauce piment"], kcal:460, prot:18, lip:24, gluc:42},
+    {n:"Plateau matinal", em:"🍽️", g:"Pour 2", p:3500, tag:"À deux", d:"Deux omelettes, pain grillé, avocat, bananes plantains sautées, jus d'ananas pressé du matin et café. Idéal pour bien démarrer à deux.", inc:["Jus pressé","Café"], kcal:890, prot:34, lip:46, gluc:78},
+  ]},
+  { cat:"Chawarma", plats:[
+    {n:"Chawarma poulet", em:"🌯", g:"280 g", p:2000, tag:"Notre force", d:"Émincé de poulet mariné vingt-quatre heures aux épices libanaises, grillé à la broche verticale, salade croquante, tomate, oignon rouge, cornichon et notre sauce blanche à l'ail.", inc:["Sauce ail","Frites 5 pcs"], kcal:610, prot:38, lip:29, gluc:48},
+    {n:"Chawarma viande", em:"🥙", g:"300 g", p:2500, tag:"Notre force", d:"Bœuf mariné aux sept épices, tranché finement à la broche, crudités fraîches, sauce tahini onctueuse et huile pimentée maison dans un pain moelleux.", inc:["Sauce tahini","Frites 5 pcs"], kcal:680, prot:42, lip:34, gluc:50},
+    {n:"Chawarma mixte XXL", em:"🌮", g:"420 g", p:3500, tag:"Best-seller", d:"Poulet et bœuf réunis dans un grand pain, double portion de viande, crudités, fromage fondu, sauce blanche et sauce piquante. Notre plus généreux.", inc:["2 sauces","Frites 10 pcs"], kcal:960, prot:58, lip:48, gluc:72},
+    {n:"Assiette chawarma", em:"🍛", g:"450 g", p:3000, tag:"", d:"La viande de chawarma servie sans pain, sur un lit de riz parfumé, avec salade fraîche, houmous et pain pita chaud à côté.", inc:["Houmous","Pita"], kcal:820, prot:46, lip:36, gluc:78},
+  ]},
+  { cat:"Grillades", plats:[
+    {n:"Poulet braisé entier", em:"🍗", g:"1 pièce", p:5000, tag:"Partage", d:"Poulet fermier mariné aux herbes locales et braisé lentement au feu de bois, servi avec sauce tomate épicée et attiéké ou frites au choix.", inc:["Attiéké ou frites","Piment vert"], kcal:1120, prot:82, lip:64, gluc:38},
+    {n:"Poisson braisé", em:"🐟", g:"400 g", p:4000, tag:"", d:"Dorade fraîche du jour farcie aux oignons et au persil, grillée au charbon, arrosée de citron vert et servie avec sauce tomate maison.", inc:["Attiéké","Sauce tomate"], kcal:640, prot:56, lip:26, gluc:42},
+    {n:"Brochettes de bœuf", em:"🍢", g:"5 pièces", p:2500, tag:"", d:"Cinq brochettes de bœuf tendre marinées à l'ail et au gingembre, grillées à la commande, saupoudrées de piment sec et servies avec oignons crus.", inc:["Piment sec"], kcal:520, prot:44, lip:32, gluc:8},
+  ]},
+  { cat:"Accompagnements", plats:[
+    {n:"Frites maison", em:"🍟", g:"200 g", p:1000, tag:"", d:"Pommes de terre fraîches taillées à la main, deux cuissons pour un extérieur croustillant et un cœur fondant, sel de mer.", inc:["Ketchup ou mayo"], kcal:480, prot:6, lip:24, gluc:58},
+    {n:"Attiéké", em:"🍚", g:"250 g", p:800, tag:"", d:"Semoule de manioc fermentée, légère et parfumée, préparée chaque matin. L'accompagnement traditionnel de nos grillades.", inc:[], kcal:280, prot:3, lip:2, gluc:62},
+    {n:"Alloco", em:"🍌", g:"200 g", p:1000, tag:"", d:"Bananes plantains bien mûres coupées en biseau et frites à l'huile de palme, servies avec une sauce pimentée aux oignons.", inc:["Sauce piment"], kcal:340, prot:2, lip:14, gluc:56},
+  ]},
+  { cat:"Boissons", plats:[
+    {n:"Jus d'ananas pressé", em:"🍍", g:"40 cl", p:1000, tag:"Frais", d:"Ananas pain de sucre pressé à la commande, sans sucre ajouté, servi bien frais avec de la glace pilée.", inc:["Glaçons"], kcal:180, prot:1, lip:0, gluc:44},
+    {n:"Bissap glacé", em:"🌺", g:"40 cl", p:800, tag:"", d:"Infusion de fleurs d'hibiscus parfumée à la menthe fraîche et au gingembre, légèrement sucrée, servie très fraîche.", inc:["Menthe"], kcal:120, prot:0, lip:0, gluc:30},
+    {n:"Sucrerie", em:"🥤", g:"33 cl", p:600, tag:"", d:"Boisson gazeuse au choix parmi notre sélection, servie fraîche à la bouteille.", inc:[], kcal:140, prot:0, lip:0, gluc:36},
+  ]},
+];
+
+const fmt = n => n.toLocaleString('fr-FR') + " F";
+let panier = [], plaCourant = null, qte = 1;
+
+// onglets
+const cats = document.getElementById('cats');
+CARTE.forEach((s,i)=>{
+  const b = document.createElement('button');
+  b.className = 'cat' + (i===0?' on':''); b.textContent = s.cat;
+  cats.appendChild(b);
+});
+
+// menu
+const menu = document.getElementById('menu');
+CARTE.forEach((s,i)=>{
+  const sec = document.createElement('section');
+  sec.className = 'sec'; sec.id = 'sec'+i;
+  sec.innerHTML = `<div class="sec-h"><h2>${s.cat}</h2><em>${s.plats.length} plats</em></div>`;
+  const g = document.createElement('div'); g.className = 'grid';
+  s.plats.forEach((p,j)=>{
+    const c = document.createElement('div'); c.className='card';
+    const vert = ['Frais','Matin'].includes(p.tag);
+    c.innerHTML = `
+      <div class="ph">
+        <div class="plate"></div><span>${p.em}</span>
+        ${p.tag?`<div class="tagpop${vert?' vert':''}">${p.tag}</div>`:''}
+      </div>
+      <div class="body">
+        <h4>${p.n}</h4>
+        <div class="meta">${p.g}</div>
+        <div class="price">${fmt(p.p)}</div>
+        <div class="acts">
+          <button class="btn btn-voir" data-i="${i}" data-j="${j}">Voir</button>
+          <button class="btn btn-add" data-i="${i}" data-j="${j}" data-n="${p.n}">Ajouter</button>
+        </div>
+      </div>`;
+    c.querySelector('.btn-voir').onclick = ()=>ouvrir(i,j);
+    c.querySelector('.btn-add').onclick = ()=>{ ajouter(s.plats[j],1); };
+    g.appendChild(c);
+  });
+  sec.appendChild(g); menu.appendChild(sec);
+});
+
+// fiche plat
+function ouvrir(i,j){
+  const p = CARTE[i].plats[j]; plaCourant = p; qte = 1;
+  document.getElementById('sheet').innerHTML = `
+    <button class="close" onclick="fermer()">×</button>
+    <div class="hero-ph"><div class="plate"></div><span>${p.em}</span></div>
+    <div class="sheet-body">
+      <h3>${p.n}</h3>
+      <p class="compo">${p.d}</p>
+      ${p.inc.length?`<div class="lbl">Inclus dans la commande</div>
+        <div class="chips">${p.inc.map(x=>`<span class="chip">✓ ${x}</span>`).join('')}</div>`:''}
+      <div class="lbl">Portion &amp; valeurs</div>
+      <div class="facts">
+        <div class="fact"><b>${p.g}</b><span>portion</span></div>
+        <div class="fact"><b>${p.kcal}</b><span>kcal</span></div>
+        <div class="fact"><b>${p.prot}</b><span>protéines</span></div>
+        <div class="fact"><b>${p.lip}</b><span>lipides</span></div>
+        <div class="fact"><b>${p.gluc}</b><span>glucides</span></div>
+      </div>
+    </div>
+    <div class="sheet-bar">
+      <div class="nm"><p>${p.n}</p><b>${fmt(p.p)}</b></div>
+      <div class="qty">
+        <button onclick="majQ(-1)">−</button><b id="q">1</b><button onclick="majQ(1)">+</button>
+      </div>
+      <button class="add" onclick="ajouterDepuisFiche()">Ajouter</button>
+    </div>`;
+  document.getElementById('veil').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function fermer(){ document.getElementById('veil').classList.remove('on'); document.body.style.overflow=''; }
+document.getElementById('veil').onclick = e => { if(e.target.id==='veil') fermer(); };
+function majQ(d){ qte = Math.max(1, qte+d); document.getElementById('q').textContent = qte; }
+function ajouterDepuisFiche(){ ajouter(plaCourant, qte); fermer(); }
+
+function ajouter(p, n){
+  const ex = panier.find(x=>x.n===p.n);
+  if(ex) ex.q += n; else panier.push({n:p.n, p:p.p, q:n, em:p.em});
+  majPanier(); toast(`${p.n} ajouté`);
+}
+function majPanier(){
+  const nb = panier.reduce((s,x)=>s+x.q,0);
+  const tt = panier.reduce((s,x)=>s+x.p*x.q,0);
+  document.getElementById('cartCount').textContent = nb + (nb>1?' articles':' article');
+  document.getElementById('cartTotal').textContent = fmt(tt);
+  document.getElementById('cart').classList.toggle('on', nb>0);
+  majBoutonsAjout();
+}
+/* reflète le panier sur les boutons Ajouter : ✓ ×N et couleur verte */
+function majBoutonsAjout(){
+  document.querySelectorAll('.btn-add').forEach(b=>{
+    const it = panier.find(x=>x.n===b.dataset.n);
+    if(it){ b.classList.add('added'); b.textContent = `✓ ×${it.q}`; }
+    else{ b.classList.remove('added'); b.textContent = 'Ajouter'; }
+  });
+}
+let tmr;
+function toast(t){
+  const el = document.getElementById('toast'); el.textContent = t; el.classList.add('on');
+  clearTimeout(tmr); tmr = setTimeout(()=>el.classList.remove('on'), 1800);
+}
+const WA_RESTO = "2290100000000";
+let mode = null, msgFinal = "";
+
+function recapHTML(){
+  const tt = panier.reduce((s,x)=>s+x.p*x.q,0);
+  return `<div class="recap">
+    ${panier.map(x=>`<div class="li"><span>${x.q} × ${x.n}</span><span>${fmt(x.p*x.q)}</span></div>`).join('')}
+    <div class="tt"><span>Total</span><b>${fmt(tt)}</b></div></div>`;
+}
+
+function ouvrirPanier(){
+  document.getElementById('ck').classList.add('on');
+  document.body.style.overflow='hidden';
+  rendrePanier();
+}
+function rendrePanier(){
+  const sh = document.getElementById('ckSheet');
+  if(!panier.length){
+    sh.innerHTML = `<div class="ck-h"><h3>Votre panier</h3><button onclick="fermerCk()">×</button></div>
+      <div class="pn-vide">Votre panier est vide.<br>Ajoutez des plats depuis la carte.</div>
+      <button class="ck-go" onclick="fermerCk()">Retour à la carte</button>`;
+    return;
+  }
+  const tt = panier.reduce((s,x)=>s+x.p*x.q,0);
+  sh.innerHTML = `
+    <div class="ck-h"><h3>Votre panier</h3><button onclick="fermerCk()">×</button></div>
+    <div class="ck-sub">Ajustez les quantités avant de commander.</div>
+    <div class="pn">
+      ${panier.map((x,i)=>`
+        <div class="pn-li">
+          <div class="em">${x.em||'🍽️'}</div>
+          <div class="in"><b>${x.n}</b><span><i>${fmt(x.p)}</i> l'unité · ${fmt(x.p*x.q)}</span></div>
+          <div class="pnq">
+            <button class="${x.q===1?'del':''}" onclick="modQ(${i},-1)">${x.q===1?'🗑':'−'}</button>
+            <b>${x.q}</b>
+            <button onclick="modQ(${i},1)">+</button>
+          </div>
+        </div>`).join('')}
+    </div>
+    <div class="pn-tt"><span>Total à payer</span><b>${fmt(tt)}</b></div>
+    <button class="ck-go" onclick="etapeMode()">Commander</button>
+    <button class="ck-back" onclick="fermerCk()">← Continuer mes achats</button>`;
+}
+function modQ(i,d){
+  panier[i].q += d;
+  if(panier[i].q <= 0) panier.splice(i,1);
+  majPanier(); rendrePanier();
+}
+function etapeMode(){
+  mode = null;
+  document.getElementById('ckSheet').innerHTML = `
+    <div class="ck-h"><h3>Votre commande</h3><button onclick="fermerCk()">×</button></div>
+    <div class="ck-sub">Où souhaitez-vous être servi ?</div>
+    ${recapHTML()}
+    <div class="modes">
+      <button class="mode" onclick="choisir('place')">
+        <div class="ico"><i>🍽️</i></div>
+        <div class="tx"><b>Sur place</b><span>Je suis au restaurant, servez-moi à ma table</span></div>
+      </button>
+      <button class="mode liv" onclick="choisir('liv')">
+        <div class="ico"><i>🛵</i></div>
+        <div class="tx"><b>Me faire livrer</b><span>Hôtel, guesthouse, bureau ou domicile</span></div>
+      </button>
+    </div>
+    <button class="ck-back" onclick="rendrePanier()">← Retour au panier</button>`;
+}
+function fermerCk(){ document.getElementById('ck').classList.remove('on'); document.body.style.overflow=''; }
+document.getElementById('ck').onclick = e => { if(e.target.id==='ck') fermerCk(); };
+
+function choisir(m){
+  mode = m;
+  const sh = document.getElementById('ckSheet');
+  if(m==='place'){
+    sh.innerHTML = `
+      <div class="ck-h"><h3>Sur place</h3><button onclick="fermerCk()">×</button></div>
+      <div class="ck-sub">Indiquez le numéro inscrit sur votre table pour que le service vous trouve.</div>
+      ${recapHTML()}
+      <div class="fld tbl">
+        <label>Numéro de table</label>
+        <input id="fTable" type="tel" inputmode="numeric" maxlength="3" placeholder="12" oninput="vTable()">
+        <div class="hint">Il figure sur le chevalet ou l'autocollant du QR code.</div>
+      </div>
+      <button class="ck-go" id="goPlace" disabled onclick="envoyerPlace()">Envoyer ma commande</button>
+      <button class="ck-back" onclick="etapeMode()">← Changer de mode</button>`;
+    setTimeout(()=>document.getElementById('fTable').focus(),120);
+  } else {
+    sh.innerHTML = `
+      <div class="ck-h"><h3>Me faire livrer</h3><button onclick="fermerCk()">×</button></div>
+      <div class="ck-sub">Quelques informations pour que le livreur vous trouve du premier coup.</div>
+      ${recapHTML()}
+      <div class="duo">
+        <div class="fld"><label>Votre nom</label><input id="fNom" placeholder="Ex : Koffi M." oninput="vLiv()"></div>
+        <div class="fld"><label>Téléphone</label><input id="fTel" type="tel" placeholder="Ex : 97 00 00 00" oninput="vLiv()"></div>
+      </div>
+      <div class="fld"><label>Type de lieu</label>
+        <div class="seg" id="segLieu">
+          <button class="on" onclick="segLieu(this,'Hôtel')">Hôtel</button>
+          <button onclick="segLieu(this,'Guesthouse')">Guesthouse</button>
+          <button onclick="segLieu(this,'Domicile')">Domicile</button>
+          <button onclick="segLieu(this,'Bureau')">Bureau</button>
+        </div>
+      </div>
+      <div class="duo">
+        <div class="fld"><label>Nom du lieu</label><input id="fLieu" placeholder="Ex : Hôtel du Lac" oninput="vLiv()"></div>
+        <div class="fld"><label>Chambre / étage</label><input id="fCh" placeholder="Ex : 214"></div>
+      </div>
+      <div class="fld"><label>Quartier / adresse</label>
+        <input id="fAdr" placeholder="Ex : Godomey, Rte de Yeyinou" oninput="vLiv()"></div>
+      <div class="fld"><label>Repère pour le livreur</label>
+        <textarea id="fRep" placeholder="Ex : juste après la pharmacie, portail bleu"></textarea>
+        <div class="hint">Un bon repère, c'est dix minutes de gagnées.</div>
+      </div>
+      <div class="fld"><label>Instructions (facultatif)</label>
+        <textarea id="fNote" placeholder="Ex : sans piment, appelez en arrivant"></textarea></div>
+      <button class="ck-go" id="goLiv" disabled onclick="envoyerLiv()">🛵 Envoyer ma commande</button>
+      <button class="ck-back" onclick="etapeMode()">← Changer de mode</button>`;
+  }
+}
+let typeLieu = "Hôtel";
+function segLieu(b,v){ typeLieu=v;
+  document.querySelectorAll('#segLieu button').forEach(x=>x.classList.remove('on')); b.classList.add('on'); }
+function vTable(){ document.getElementById('goPlace').disabled = !document.getElementById('fTable').value.trim(); }
+function vLiv(){
+  const ok = ['fNom','fTel','fLieu','fAdr'].every(i=>document.getElementById(i).value.trim());
+  document.getElementById('goLiv').disabled = !ok;
+}
+function lignesCmd(){
+  return panier.map(x=>`• ${x.q} × ${x.n} — ${fmt(x.p*x.q)}`).join('%0A');
+}
+function totalCmd(){ return fmt(panier.reduce((s,x)=>s+x.p*x.q,0)); }
+
+function envoyerPlace(){
+  const t = document.getElementById('fTable').value.trim();
+  msgFinal = `*NOUVELLE COMMANDE — SUR PLACE*%0A%0A*Table n° ${t}*%0A%0A${lignesCmd()}%0A%0A*Total : ${totalCmd()}*`;
+  fermerCk();
+  coupDeFeu(t);
+}
+
+/* ── acte 1 : le ticket se prépare (sur place) ── */
+function coupDeFeu(table){
+  tableCourante = table;
+  overlayCourant = 'feu';
+  const el = document.getElementById('feu');
+  const fl = document.getElementById('flammes');
+  fl.innerHTML = '<div class="chaleur"></div>';
+  // lit de braises
+  for(let i=0;i<16;i++){
+    const b=document.createElement('div'); b.className='lit';
+    b.style.left=(Math.random()*100)+'%';
+    b.style.animationDelay=(Math.random()*1.3)+'s';
+    b.style.animationDuration=(.9+Math.random()*.9)+'s';
+    fl.appendChild(b);
+  }
+  // langues de flammes (corps + coeur, rythmes désynchronisés)
+  for(let i=0;i<16;i++){
+    const d=document.createElement('div'); d.className='fl';
+    const w = 22+Math.random()*40;
+    d.style.width=w+'px'; d.style.height=(w*2.9)+'px';
+    d.style.left=(Math.random()*96)+'%';
+    d.style.setProperty('--dur',(1.35+Math.random()*1.2).toFixed(2)+'s');
+    d.style.setProperty('--del',(Math.random()*2.2).toFixed(2)+'s');
+    d.style.setProperty('--op',(.55+Math.random()*.45).toFixed(2));
+    d.style.setProperty('--rot',((Math.random()-.5)*14).toFixed(1)+'deg');
+    d.innerHTML='<i></i>';
+    fl.appendChild(d);
+  }
+  // étincelles qui scintillent en montant
+  for(let i=0;i<22;i++){
+    const e=document.createElement('div'); e.className='etin';
+    e.style.left=(Math.random()*100)+'%';
+    e.style.bottom=(Math.random()*14)+'%';
+    e.style.setProperty('--dx',((Math.random()-.5)*150).toFixed(0)+'px');
+    e.style.setProperty('--dur',(1.3+Math.random()*1.4).toFixed(2)+'s');
+    e.style.setProperty('--del',(Math.random()*2).toFixed(2)+'s');
+    fl.appendChild(e);
+  }
+  document.getElementById('fFini').classList.remove('on');
+  document.getElementById('fEta').classList.remove('show');
+  document.getElementById('fTitre').textContent = 'VOTRE TICKET SE PRÉPARE';
+  document.getElementById('fTag').textContent = 'Le chef aiguise ses couteaux';
+  el.classList.remove('cuisson');
+  resetPastilles();
+  el.classList.add('on'); document.body.style.overflow='hidden';
+  jouerEtapes('ft', ['Couteaux aiguisés','Ticket de commande rédigé',`Table n° ${table} notée`], [900,1700,2500]);
+  setTimeout(()=>document.getElementById('fFini').classList.add('on'),3400);
+}
+
+function envoyerLiv(){
+  const g = i => document.getElementById(i).value.trim();
+  const ch = g('fCh') ? `%0AChambre / étage : ${g('fCh')}` : '';
+  const rep = g('fRep') ? `%0ARepère : ${g('fRep')}` : '';
+  const note = g('fNote') ? `%0A%0A_Instructions : ${g('fNote')}_` : '';
+  msgFinal = `*NOUVELLE COMMANDE — LIVRAISON*%0A%0A${lignesCmd()}%0A%0A*Total : ${totalCmd()}*%0A%0A`
+    + `*Livrer à :*%0A${g('fNom')} — ${g('fTel')}%0A${typeLieu} : ${g('fLieu')}${ch}%0A${g('fAdr')}${rep}${note}`;
+  fermerCk();
+  modeSuper();
+}
+
+/* ── acte 1 : le ticket se prépare (livraison) ── */
+function modeSuper(){
+  overlayCourant = 'sup';
+  const sup = document.getElementById('sup');
+  const str = document.getElementById('streaks');
+  str.innerHTML = '';
+  for(let i=0;i<11;i++){
+    const d=document.createElement('div'); d.className='streak';
+    d.style.top=(6+Math.random()*88)+'%';
+    d.style.width=(70+Math.random()*160)+'px';
+    d.style.animationDelay=(Math.random()*.6)+'s';
+    d.style.animationDuration=(.45+Math.random()*.35)+'s';
+    d.style.opacity=.25+Math.random()*.55;
+    str.appendChild(d);
+  }
+  document.getElementById('fini').classList.remove('on');
+  document.getElementById('eta').classList.remove('show');
+  document.getElementById('sTitre').textContent = 'VOTRE TICKET SE PRÉPARE';
+  document.getElementById('sTag').textContent = "Vérification de l'adresse";
+  resetPastilles();
+  sup.classList.add('on'); document.body.style.overflow='hidden';
+  jouerEtapes('st', ['Adresse de livraison vérifiée','Ticket de commande rédigé','Itinéraire estimé'], [900,1700,2500]);
+  setTimeout(()=>document.getElementById('fini').classList.add('on'),3400);
+}
+
+function resetPastilles(){
+  ['fPastTxt','sPastTxt'].forEach(i=>{
+    const t=document.getElementById(i);
+    if(t) t.textContent='Commande pas encore envoyée';
+  });
+  cacherRetour();
+}
+let attenteEnvoi = false, overlayCourant = null, tableCourante = '';
+function envoiWA(){
+  window.open(`https://wa.me/${WA_RESTO}?text=${msgFinal}`,'_blank');
+  attenteEnvoi = true;
+  ['fPastTxt','sPastTxt'].forEach(i=>{
+    const t=document.getElementById(i);
+    if(t) t.textContent='Dans WhatsApp, appuyez sur Envoyer ➤';
+  });
+}
+/* au retour de WhatsApp, on demande confirmation */
+document.addEventListener('visibilitychange', ()=>{
+  if(document.hidden || !attenteEnvoi || !overlayCourant) return;
+  const q = document.getElementById(overlayCourant==='feu' ? 'fRetour' : 'sRetour');
+  if(q) q.classList.add('on');
+});
+function cacherRetour(){
+  document.querySelectorAll('.retourQ').forEach(r=>r.classList.remove('on'));
+}
+/* acte 3 : la commande est partie, place à la célébration */
+function celebrer(){
+  attenteEnvoi = false;
+  cacherRetour();
+  if(overlayCourant==='feu'){
+    document.getElementById('fFini').classList.remove('on');
+    document.getElementById('feu').classList.add('cuisson'); // le chef passe aux fourneaux
+    document.getElementById('fTitre').textContent = 'COUP DE FEU LANCÉ';
+    document.getElementById('fTag').textContent = 'Votre table est prioritaire';
+    document.getElementById('fEta').innerHTML = 'Servi dans <b>15 – 20 min</b>';
+    jouerEtapes('ft', ['Commande transmise sur WhatsApp','Le chef est aux fourneaux',`Table n° ${tableCourante} prioritaire`], [400,1400,2400]);
+    setTimeout(()=>document.getElementById('fEta').classList.add('show'),2700);
+  } else {
+    document.getElementById('fini').classList.remove('on');
+    document.getElementById('sTitre').textContent = 'MODE SUPER ACTIVÉ';
+    document.getElementById('sTag').textContent = 'Livraison ultra rapide';
+    document.getElementById('eta').innerHTML = 'Livraison estimée : <b>25 – 35 min</b>';
+    jouerEtapes('st', ['Commande transmise sur WhatsApp',"La cuisine s'active",'Le livreur est notifié'], [400,1400,2400]);
+    setTimeout(()=>document.getElementById('eta').classList.add('show'),2700);
+  }
+  setTimeout(()=>{
+    fermerFeu();
+    panier.length = 0; majPanier();
+    toast('Commande envoyée — merci !');
+  },5000);
+}
+function jouerEtapes(prefix, textes, delais){
+  textes.forEach((t,i)=>{
+    const st = document.getElementById(prefix+i);
+    st.classList.remove('done');
+    st.querySelector('.p').textContent = i+1;
+    st.querySelector('span').textContent = t;
+    setTimeout(()=>{ st.classList.add('done'); st.querySelector('.p').textContent='✓'; }, delais[i]);
+  });
+}
+function fermerFeu(){
+  attenteEnvoi = false;
+  document.getElementById('sup').classList.remove('on');
+  document.getElementById('feu').classList.remove('on');
+  document.body.style.overflow='';
+}
+</script>
+</body>
+</html>
