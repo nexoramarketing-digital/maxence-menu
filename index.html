@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#17120F">
 <link rel="icon" type="image/jpeg" href="assets/logo-maxence.jpg">
 <link rel="preload" as="image" href="assets/logo-maxence.jpg">
-<link rel="preload" as="image" href="assets/intro-chef-reveal-4k.png">
+<link rel="preload" as="image" href="assets/intro-chef-reveal.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -80,7 +80,8 @@ h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif}
 .body{padding:11px 12px 12px;display:flex;flex-direction:column;flex:1}
 .body h4{font-family:'Figtree';font-size:13.5px;font-weight:600;line-height:1.25;margin-bottom:3px}
 .body .meta{font-size:10.5px;color:var(--os-doux);margin-bottom:9px}
-.body .price{font-family:'Bricolage Grotesque';font-size:16px;font-weight:600;color:var(--safran);margin-bottom:10px}
+.body .price{font-family:'Bricolage Grotesque';font-size:16px;font-weight:600;color:var(--safran);margin-bottom:10px;line-height:1.25}
+.body .price.multi{font-size:12.5px;min-height:32px}
 .acts{display:flex;gap:7px;margin-top:auto}
 .btn{flex:1;border:none;border-radius:10px;padding:9px 6px;font-family:'Figtree';font-size:12px;font-weight:600;
   cursor:pointer;transition:.2s}
@@ -90,6 +91,7 @@ h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif}
 .btn-add:active{background:var(--safran)}
 .btn-add.added{background:var(--terrain);color:#fff}
 .btn-add.added:active{background:#5EA46C}
+.btn:disabled{cursor:default;opacity:.7;background:rgba(242,235,225,.10);color:var(--os-doux)}
 
 /* ── FICHE PLAT (MODALE) ── */
 .veil{position:fixed;inset:0;z-index:80;background:rgba(10,7,5,.82);backdrop-filter:blur(4px);
@@ -114,7 +116,13 @@ h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif}
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
 .chip{display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:24px;
   border:1px solid var(--ligne);background:var(--surface2);font-size:12px}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:18px}
+.opt{min-height:48px;border:1px solid var(--ligne);border-radius:13px;background:var(--surface2);color:var(--os);
+  padding:9px 11px;font:600 13px 'Figtree';cursor:pointer;text-align:left;transition:.2s}
+.opt span{display:block;color:var(--safran);font-family:'Bricolage Grotesque';font-size:15px;margin-top:2px}
+.opt.on{border-color:var(--braise);box-shadow:0 0 0 2px rgba(232,148,74,.18);background:rgba(232,148,74,.10)}
 .facts{display:flex;gap:20px;padding:14px 0;border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne);margin-bottom:18px}
+.fact{min-width:0;flex:1}
 .fact b{display:block;font-family:'Bricolage Grotesque';font-size:17px;font-weight:600;color:var(--os)}
 .fact span{font-size:10.5px;color:var(--os-doux)}
 
@@ -628,11 +636,12 @@ body{
   .body{padding:10px}
   .body h4{font-size:14px;line-height:1.3}
   .body .meta{font-size:11px}.body .price{font-size:16px}
+  .body .price.multi{font-size:12px}
   .acts{gap:6px}.btn{font-size:12px;padding:8px 5px}
   .sheet{max-height:96dvh;padding-bottom:96px}
   .sheet-body{padding:17px 16px 0}
   .sheet-body h3{font-size:23px}.compo{font-size:15px}
-  .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .fact b{font-size:16px}.fact span{font-size:10px}
   .sheet-bar{padding:11px 12px calc(11px + env(safe-area-inset-bottom));gap:8px}
   .sheet-bar .nm p{font-size:11px}.sheet-bar .nm b{font-size:17px}
@@ -661,7 +670,7 @@ body{
     <div class="splash-story">
       <div class="splash-logo-shot"><img src="assets/logo-maxence.jpg" alt="Logo officiel du Restaurant Maxence"></div>
       <div class="splash-reveal-shot">
-        <img src="assets/intro-chef-reveal-4k.png" alt="Le chef Maxence ouvre sa cloche et révèle le plat signature chaud">
+        <img src="assets/intro-chef-reveal.webp" alt="Le chef Maxence ouvre sa cloche et révèle le plat signature chaud">
         <div class="steam" aria-hidden="true"><i></i><i></i><i></i></div>
       </div>
       <div class="splash-copy">
@@ -692,14 +701,14 @@ body{
   <div class="eyebrow">Ce soir sur grand écran</div>
   <h3>La terrasse football</h3>
   <p>Tous les grands matchs retransmis en plein air. Réservez votre table avant le coup d'envoi.</p>
-  <a class="go" href="reservation.html">Réserver une table</a>
+  <a class="go" href="https://wa.me/2290194306946?text=Bonjour%20Restaurant%20Maxence%2C%20je%20souhaite%20r%C3%A9server%20une%20table." target="_blank" rel="noopener">Réserver une table</a>
 </div>
 
 <div class="spot traiteur">
   <div class="eyebrow">Service traiteur</div>
   <h3>Nous régalons vos événements</h3>
   <p>Mariages, baptêmes, séminaires et réceptions d'entreprise. Recevez votre devis en quelques minutes.</p>
-  <a class="go" href="traiteur.html">Demander un devis</a>
+  <a class="go" href="https://wa.me/2290194306946?text=Bonjour%20Restaurant%20Maxence%2C%20je%20souhaite%20un%20devis%20pour%20un%20service%20traiteur." target="_blank" rel="noopener">Demander un devis</a>
 </div>
 
 <main id="menu"></main>
@@ -708,12 +717,13 @@ body{
   <div class="ag-stars">★★★★★</div>
   <b>Vous avez aimé ? Dites-le sur Google</b>
   <p>Votre avis aide Maxence à se faire connaître — merci !</p>
-  <a class="ag-btn" href="#" target="_blank" rel="noopener">Laisser un avis Google</a>
+  <a class="ag-btn" href="https://www.google.com/search?q=Restaurant+Maxence+Abomey-Calavi" target="_blank" rel="noopener">Laisser un avis Google</a>
 </section>
 
 <footer>
   Menu numérique réalisé par <b>NEXORA Marketing Digital</b><br>
-  Photos culinaires du Restaurant Maxence · Abomey-Calavi, Bénin
+  Photos culinaires du Restaurant Maxence · Abomey-Calavi, Bénin<br>
+  Commandes : +229 01 94 30 69 46 · +229 01 97 96 03 79
 </footer>
 
 <div class="veil" id="veil"><div class="sheet" id="sheet"></div></div>
@@ -909,103 +919,266 @@ function entrer(){
 }
 document.addEventListener('keydown',e=>{ if((e.key==='Enter'||e.key===' ') && document.getElementById('splash')) entrer(); });
 
-const CARTE_DEMO = [
-  { cat:"Petit déjeuner", plats:[
-    {n:"Omelette complète", em:"🍳", g:"250 g", p:1500, tag:"Matin", d:"Omelette de trois œufs, oignons frais, tomates, poivron vert, servie avec pain artisanal grillé et une portion de haricots à l'huile rouge.", inc:["Pain grillé","Café ou thé"], kcal:420, prot:22, lip:28, gluc:24},
-    {n:"Bouillie & beignets", em:"🥣", g:"1 bol + 5 pcs", p:1000, tag:"Matin", d:"Bouillie de mil onctueuse relevée au gingembre et à la muscade, accompagnée de cinq beignets de haricot dorés à la demande.", inc:["Sucre à part"], kcal:380, prot:9, lip:12, gluc:58},
-    {n:"Pain omelette express", em:"🥪", g:"180 g", p:1000, tag:"", d:"Demi-baguette garnie d'une omelette aux oignons et à la tomate, mayonnaise maison et une pointe de piment doux. Prêt en cinq minutes.", inc:["Sauce piment"], kcal:460, prot:18, lip:24, gluc:42},
-    {n:"Plateau matinal", em:"🍽️", g:"Pour 2", p:3500, tag:"À deux", d:"Deux omelettes, pain grillé, avocat, bananes plantains sautées, jus d'ananas pressé du matin et café. Idéal pour bien démarrer à deux.", inc:["Jus pressé","Café"], kcal:890, prot:34, lip:46, gluc:78},
-  ]},
-  { cat:"Chawarma", plats:[
-    {n:"Chawarma poulet", em:"🌯", g:"280 g", p:2000, tag:"Notre force", d:"Émincé de poulet mariné vingt-quatre heures aux épices libanaises, grillé à la broche verticale, salade croquante, tomate, oignon rouge, cornichon et notre sauce blanche à l'ail.", inc:["Sauce ail","Frites 5 pcs"], kcal:610, prot:38, lip:29, gluc:48},
-    {n:"Chawarma viande", em:"🥙", g:"300 g", p:2500, tag:"Notre force", d:"Bœuf mariné aux sept épices, tranché finement à la broche, crudités fraîches, sauce tahini onctueuse et huile pimentée maison dans un pain moelleux.", inc:["Sauce tahini","Frites 5 pcs"], kcal:680, prot:42, lip:34, gluc:50},
-    {n:"Chawarma mixte XXL", em:"🌮", g:"420 g", p:3500, tag:"Best-seller", d:"Poulet et bœuf réunis dans un grand pain, double portion de viande, crudités, fromage fondu, sauce blanche et sauce piquante. Notre plus généreux.", inc:["2 sauces","Frites 10 pcs"], kcal:960, prot:58, lip:48, gluc:72},
-    {n:"Assiette chawarma", em:"🍛", g:"450 g", p:3000, tag:"", d:"La viande de chawarma servie sans pain, sur un lit de riz parfumé, avec salade fraîche, houmous et pain pita chaud à côté.", inc:["Houmous","Pita"], kcal:820, prot:46, lip:36, gluc:78},
-  ]},
-  { cat:"Grillades", plats:[
-    {n:"Poulet braisé entier", em:"🍗", g:"1 pièce", p:5000, tag:"Partage", d:"Poulet fermier mariné aux herbes locales et braisé lentement au feu de bois, servi avec sauce tomate épicée et attiéké ou frites au choix.", inc:["Attiéké ou frites","Piment vert"], kcal:1120, prot:82, lip:64, gluc:38},
-    {n:"Poisson braisé", em:"🐟", g:"400 g", p:4000, tag:"", d:"Dorade fraîche du jour farcie aux oignons et au persil, grillée au charbon, arrosée de citron vert et servie avec sauce tomate maison.", inc:["Attiéké","Sauce tomate"], kcal:640, prot:56, lip:26, gluc:42},
-    {n:"Brochettes de bœuf", em:"🍢", g:"5 pièces", p:2500, tag:"", d:"Cinq brochettes de bœuf tendre marinées à l'ail et au gingembre, grillées à la commande, saupoudrées de piment sec et servies avec oignons crus.", inc:["Piment sec"], kcal:520, prot:44, lip:32, gluc:8},
-  ]},
-  { cat:"Accompagnements", plats:[
-    {n:"Frites maison", em:"🍟", g:"200 g", p:1000, tag:"", d:"Pommes de terre fraîches taillées à la main, deux cuissons pour un extérieur croustillant et un cœur fondant, sel de mer.", inc:["Ketchup ou mayo"], kcal:480, prot:6, lip:24, gluc:58},
-    {n:"Attiéké", em:"🍚", g:"250 g", p:800, tag:"", d:"Semoule de manioc fermentée, légère et parfumée, préparée chaque matin. L'accompagnement traditionnel de nos grillades.", inc:[], kcal:280, prot:3, lip:2, gluc:62},
-    {n:"Alloco", em:"🍌", g:"200 g", p:1000, tag:"", d:"Bananes plantains bien mûres coupées en biseau et frites à l'huile de palme, servies avec une sauce pimentée aux oignons.", inc:["Sauce piment"], kcal:340, prot:2, lip:14, gluc:56},
-  ]},
-  { cat:"Boissons", plats:[
-    {n:"Jus d'ananas pressé", em:"🍍", g:"40 cl", p:1000, tag:"Frais", d:"Ananas pain de sucre pressé à la commande, sans sucre ajouté, servi bien frais avec de la glace pilée.", inc:["Glaçons"], kcal:180, prot:1, lip:0, gluc:44},
-    {n:"Bissap glacé", em:"🌺", g:"40 cl", p:800, tag:"", d:"Infusion de fleurs d'hibiscus parfumée à la menthe fraîche et au gingembre, légèrement sucrée, servie très fraîche.", inc:["Menthe"], kcal:120, prot:0, lip:0, gluc:30},
-    {n:"Sucrerie", em:"🥤", g:"33 cl", p:600, tag:"", d:"Boisson gazeuse au choix parmi notre sélection, servie fraîche à la bouteille.", inc:[], kcal:140, prot:0, lip:0, gluc:36},
-  ]},
-];
+/*
+  Carte officielle actualisée depuis le PDF fourni par le Restaurant Maxence.
+  Les photos du restaurant sont prioritaires. Les compositions générées ne servent
+  qu'aux familles de produits pour lesquelles aucune photo n'était disponible.
+*/
+const A = "assets/";
+const I = (n,p,x={}) => ({
+  n, p, em:x.em||"🍽️", g:x.g||"À la carte", tag:x.tag||"", d:x.d||"Préparé à la commande par le Restaurant Maxence.",
+  inc:x.inc||[], img:x.img||"", imgs:x.imgs||null, pos:x.pos||"50% 50%", fit:x.fit||"cover",
+  options:x.options||null, orderable:x.orderable!==false, priceLabel:x.priceLabel||"", prefix:x.prefix||""
+});
+const O = (n,options,x={}) => I(n,options[0][1],{...x,options});
+const Q = (n,priceLabel,x={}) => I(n,0,{...x,priceLabel,orderable:false});
+const C = (cat,img,plats) => ({cat,plats:plats.map(p=>({...p,img:p.img||img}))});
 
-/* Carte finale Maxence : photos du restaurant + trois compositions 4K pour les visuels absents. */
 const CARTE = [
-  { cat:"Petit déjeuner", plats:[
-    {n:"Omelette complète", em:"🍳", g:"250 g", p:1500, tag:"Matin", d:"Omelette de trois œufs, oignons frais, tomates et poivron vert, servie avec pain artisanal grillé et haricots à l'huile rouge.", inc:["Pain grillé","Café ou thé"], kcal:420, prot:22, lip:28, gluc:24, img:"assets/generated-breakfast-4k.png", pos:"20% 18%"},
-    {n:"Bouillie & beignets", em:"🥣", g:"1 bol + 5 pcs", p:1000, tag:"Matin", d:"Bouillie de mil onctueuse relevée au gingembre et à la muscade, accompagnée de cinq beignets dorés.", inc:["Sucre à part"], kcal:380, prot:9, lip:12, gluc:58, img:"assets/generated-breakfast-4k.png", pos:"78% 18%"},
-    {n:"Pain omelette express", em:"🥪", g:"180 g", p:1000, tag:"", d:"Baguette garnie d'une omelette aux légumes, tomate, oignon rouge et sauce maison.", inc:["Sauce piment"], kcal:460, prot:18, lip:24, gluc:42, img:"assets/generated-breakfast-4k.png", pos:"20% 82%"},
-    {n:"Plateau matinal", em:"🍽️", g:"Pour 2", p:3500, tag:"À deux", d:"Deux omelettes, pain grillé, avocat, plantain sauté, jus d'ananas pressé et café.", inc:["Jus pressé","Café"], kcal:890, prot:34, lip:46, gluc:78, img:"assets/generated-breakfast-4k.png", pos:"80% 82%"},
-    {n:"Crêpes dorées", em:"🥞", g:"4 pièces", p:1500, tag:"Nouveau", d:"Crêpes fines et moelleuses, délicatement dorées et servies chaudes.", inc:["Sucre ou sirop"], kcal:430, prot:11, lip:14, gluc:64, img:"assets/crepes.jpg"},
-  ]},
-  { cat:"Chawarma", plats:[
-    {n:"Chawarma poulet", em:"🌯", g:"280 g", p:2000, tag:"Notre force", d:"Poulet mariné aux épices, grillé, crudités croquantes, cornichons et sauce blanche à l'ail.", inc:["Sauce ail","Frites 5 pcs"], kcal:610, prot:38, lip:29, gluc:48, img:"assets/chawarma-poulet.png", pos:"50% 50%", fit:"contain"},
-    {n:"Chawarma viande", em:"🥙", g:"300 g", p:2500, tag:"Notre force", d:"Bœuf mariné, crudités fraîches et sauce tahini dans un pain chaud et moelleux.", inc:["Sauce tahini","Frites 5 pcs"], kcal:680, prot:42, lip:34, gluc:50, img:"assets/chawarma-viande.png", pos:"50% 50%", fit:"contain"},
-    {n:"Chawarma mixte XXL", em:"🌮", g:"420 g", p:3500, tag:"Best-seller", d:"Poulet et bœuf, double portion, crudités, fromage fondu et deux sauces maison.", inc:["2 sauces","Frites 10 pcs"], kcal:960, prot:58, lip:48, gluc:72, img:"assets/chawarma-mixte-xxl.png", pos:"50% 50%"},
-    {n:"Assiette chawarma", em:"🍛", g:"450 g", p:3000, tag:"", d:"Viande de chawarma servie avec frites dorées et salade fraîche sur une grande assiette.", inc:["Frites","Salade"], kcal:820, prot:46, lip:36, gluc:78, img:"assets/assiette-chawarma.png", pos:"50% 46%"},
-  ]},
-  { cat:"Spécialités béninoises", plats:[
-    {n:"Plat signature Maxence", em:"🍲", g:"Portion royale", p:5000, tag:"Signature", d:"Pâte rouge onctueuse, assortiment généreux de viandes grillées, légumes mijotés et piment vert maison.", inc:["Légumes","Sauce maison","Piment vert"], kcal:1180, prot:72, lip:54, gluc:96, img:"assets/plat-signature.jpg"},
-    {n:"Amiwo royal & viandes", em:"🍖", g:"Grande portion", p:4500, tag:"Maison", d:"Pâte rouge parfumée accompagnée de morceaux de viande braisés, crudités et sauces traditionnelles.", inc:["Crudités","Deux sauces"], kcal:1040, prot:61, lip:48, gluc:90, img:"assets/photo-10-02-59-49.jpg"},
-    {n:"Sauce gombo au poisson", em:"🥘", g:"Grande portion", p:4000, tag:"Tradition", d:"Sauce gombo généreuse aux légumes verts, servie avec poisson et pâte selon disponibilité.", inc:["Pâte"], kcal:760, prot:46, lip:34, gluc:68, img:"assets/photo-5-03-28-39.jpg"},
-    {n:"Gbéma & pâte brune", em:"🥬", g:"Grande portion", p:3500, tag:"Populaire", d:"Sauce de feuilles finement préparée, viande mijotée, oignon rouge et trois boules de pâte brune.", inc:["Piment rouge"], kcal:880, prot:43, lip:36, gluc:98, img:"assets/photo-17-02-59-49.jpg", imgs:["assets/photo-17-02-59-49.jpg","assets/photo-19-02-59-49.jpg","assets/photo-22-02-59-49.jpg","assets/photo-9-03-28-39.jpg"]},
-    {n:"Gbéma & pâte blanche", em:"🥬", g:"Grande portion", p:3500, tag:"", d:"Sauce de feuilles à la viande, relevée d'oignons et de piment, accompagnée de pâte blanche.", inc:["Piment vert"], kcal:840, prot:41, lip:32, gluc:96, img:"assets/photo-13-02-59-49.jpg"},
-    {n:"Tripes épicées maison", em:"🍲", g:"450 g", p:3500, tag:"Relevé", d:"Tripes longuement mijotées dans une sauce épicée aux oignons rouges, herbes et piments frais.", inc:["Piment frais"], kcal:690, prot:52, lip:38, gluc:34, img:"assets/photo-24-02-59-49.jpg"},
-  ]},
-  { cat:"Poissons", plats:[
-    {n:"Poisson braisé Maxence", em:"🐟", g:"400–600 g", p:4500, tag:"Au feu", d:"Poisson entier mariné, braisé et servi avec crudités, sauce verte et accompagnement selon la formule.", inc:["Sauce verte","Crudités"], kcal:680, prot:58, lip:29, gluc:44, img:"assets/photo-14-03-28-39.jpg", imgs:["assets/photo-14-03-28-39.jpg","assets/photo-1-02-59-49.jpg","assets/photo-6-02-59-49.jpg","assets/photo-6-03-28-39.jpg","assets/photo-8-03-28-39.jpg"]},
-    {n:"Poisson en sauce rouge", em:"🐟", g:"400–600 g", p:4500, tag:"Maison", d:"Poisson entier nappé d'une sauce rouge riche aux tomates, oignons et piments, avec pâte au choix.", inc:["Sauce tomate","Pâte"], kcal:720, prot:55, lip:31, gluc:52, img:"assets/photo-11-03-28-39.jpg", imgs:["assets/photo-11-03-28-39.jpg","assets/photo-10-03-28-39.jpg","assets/photo-12-02-59-49.jpg","assets/photo-14-02-59-49.jpg","assets/photo-16-02-59-49.jpg"]},
-    {n:"Poisson, spaghetti & alloco", em:"🍝", g:"Grande assiette", p:4000, tag:"Complet", d:"Filets de poisson grillés posés sur des spaghetti aux légumes, entourés d'alloco caramélisé.", inc:["Alloco","Légumes"], kcal:960, prot:49, lip:34, gluc:116, img:"assets/photo-25-02-59-49.jpg"},
-  ]},
-  { cat:"Grillades", plats:[
-    {n:"Poulet braisé entier", em:"🍗", g:"1 pièce", p:5000, tag:"Partage", d:"Poulet fermier mariné et braisé, servi avec riz, frites, salade et crudités.", inc:["Riz","Frites","Crudités"], kcal:1120, prot:82, lip:64, gluc:38, img:"assets/photo-7-02-59-49.jpg"},
-    {n:"Poulet braisé & riz", em:"🍗", g:"1/2 poulet", p:3500, tag:"Complet", d:"Poulet braisé ou frit, riz parfumé et accompagnements frais selon la présentation du jour.", inc:["Riz","Salade"], kcal:860, prot:56, lip:38, gluc:74, img:"assets/photo-7-03-28-39.jpg", imgs:["assets/photo-7-03-28-39.jpg","assets/photo-8-02-59-49.jpg","assets/photo-9-02-59-49.jpg","assets/photo-18-02-59-49.jpg"]},
-    {n:"Brochettes de bœuf", em:"🍢", g:"5 pièces", p:3000, tag:"Au feu", d:"Brochettes de bœuf et de poulet marinées, grillées avec poivrons et oignons, servies avec pommes rôties et riz.", inc:["Pommes rôties","Riz","Sauces"], kcal:780, prot:54, lip:36, gluc:62, img:"assets/photo-16-03-28-39.jpg"},
-    {n:"Viande grillée & frites", em:"🥩", g:"400 g", p:4000, tag:"", d:"Morceaux de viande grillée aux poivrons, servis avec frites dorées et légumes sautés.", inc:["Frites","Légumes"], kcal:920, prot:58, lip:49, gluc:67, img:"assets/photo-5-02-59-49.jpg"},
-    {n:"Mix grill Maxence", em:"🍖", g:"Grande assiette", p:4500, tag:"Généreux", d:"Sélection de grillades avec frites, alloco et légumes sautés sur une grande assiette à partager.", inc:["Frites","Alloco","Légumes"], kcal:1160, prot:69, lip:61, gluc:84, img:"assets/photo-3-02-59-49.jpg"},
-  ]},
-  { cat:"Crémeux & salades", plats:[
-    {n:"Émincé crémeux, couscous & alloco", em:"🍛", g:"Grande assiette", p:4000, tag:"Doux", d:"Émincé tendre et champignons dans une sauce crémeuse, avec couscous, carottes et alloco.", inc:["Couscous","Alloco","Sauce verte"], kcal:980, prot:48, lip:46, gluc:96, img:"assets/photo-23-02-59-49.jpg", imgs:["assets/photo-23-02-59-49.jpg","assets/photo-3-03-28-39.jpg"]},
-    {n:"Poulet crème & pommes rôties", em:"🍗", g:"Grande assiette", p:4000, tag:"", d:"Cuisse de poulet dorée, jardinière crémeuse de légumes et pommes de terre rôties aux herbes.", inc:["Pommes rôties","Légumes"], kcal:890, prot:51, lip:43, gluc:78, img:"assets/photo-4-03-28-39.jpg"},
-    {n:"Salade complète Maxence", em:"🥗", g:"Grande assiette", p:3000, tag:"Frais", d:"Laitue, carotte, betterave, maïs, petits pois, tomates, œuf, viande et saucisse.", inc:["Vinaigrette maison"], kcal:620, prot:34, lip:31, gluc:52, img:"assets/photo-11-02-59-49.jpg"},
-    {n:"Salade crémeuse maison", em:"🥗", g:"350 g", p:2500, tag:"Frais", d:"Pommes de terre, pâtes, petits pois, maïs, carotte, oignon rouge et œuf dans une sauce crémeuse.", inc:["Œuf"], kcal:710, prot:22, lip:38, gluc:72, img:"assets/photo-15-03-28-39.jpg"},
-  ]},
-  { cat:"Pâtes & fast-food", plats:[
-    {n:"Spaghetti Maxence", em:"🍝", g:"Grande assiette", p:2500, tag:"Maison", d:"Spaghetti sautés aux légumes croquants, petits pois et maïs, servis avec œuf au plat et sauce maison.", inc:["Œuf au plat","Sauce maison"], kcal:790, prot:27, lip:29, gluc:105, img:"assets/spaghetti-maxence.jpg"},
-    {n:"Spaghetti omelette & frites", em:"🍝", g:"Grande assiette", p:3000, tag:"Complet", d:"Spaghetti aux légumes et saucisse, omelette dorée et portion de frites selon la formule.", inc:["Omelette","Frites"], kcal:1030, prot:39, lip:48, gluc:116, img:"assets/photo-21-02-59-49.jpg", imgs:["assets/photo-21-02-59-49.jpg","assets/photo-1-03-28-39.jpg","assets/photo-2-03-28-39.jpg"]},
-    {n:"Burger croustillant & frites", em:"🍔", g:"Menu complet", p:3000, tag:"Best-seller", d:"Burger généreux au poulet croustillant, fromage, salade, tomate, oignon et sauce maison, servi avec frites.", inc:["Frites","Ketchup"], kcal:1060, prot:46, lip:53, gluc:98, img:"assets/burger-frites.jpg", imgs:["assets/burger-frites.jpg","assets/photo-12-03-28-39.jpg"]},
-  ]},
-  { cat:"Pizzas", plats:[
-    {n:"Pizza poulet", em:"🍕", g:"Grande", p:5000, tag:"À partager", d:"Sauce tomate, mozzarella, poulet grillé, tomates, oignons rouges et poivrons verts.", inc:[], kcal:1240, prot:58, lip:49, gluc:142, img:"assets/photo-13-03-28-39.jpg"},
-    {n:"Pizza pepperoni", em:"🍕", g:"Grande", p:5000, tag:"", d:"Sauce tomate, mozzarella fondante, généreuses rondelles de pepperoni, tomate et poivron vert.", inc:[], kcal:1320, prot:54, lip:62, gluc:136, img:"assets/photo-15-02-59-49.jpg"},
-    {n:"Pizza saucisse & poivrons", em:"🍕", g:"Grande", p:5000, tag:"", d:"Mozzarella, saucisse fumée, poivrons rouges et verts, tomate et herbes fraîches.", inc:[], kcal:1270, prot:52, lip:57, gluc:140, img:"assets/photo-28-02-59-49.jpg"},
-    {n:"Pizza viande hachée", em:"🍕", g:"Grande", p:5500, tag:"Généreuse", d:"Pizza généreusement garnie de viande hachée assaisonnée, mozzarella, tomate, oignon et poivrons.", inc:[], kcal:1390, prot:67, lip:64, gluc:141, img:"assets/photo-29-02-59-49.jpg"},
-    {n:"Pizza royale Maxence", em:"🍕", g:"Grande", p:6000, tag:"Signature", d:"Viande hachée, légumes colorés, petits pois, maïs, oignon rouge et mozzarella gratinée.", inc:[], kcal:1450, prot:69, lip:66, gluc:148, img:"assets/photo-30-02-59-49.jpg"},
-  ]},
-  { cat:"Accompagnements", plats:[
-    {n:"Frites maison", em:"🍟", g:"200 g", p:1000, tag:"", d:"Pommes de terre taillées épaisses et frites jusqu'à obtenir un extérieur croustillant et un cœur fondant.", inc:["Ketchup ou mayo"], kcal:480, prot:6, lip:24, gluc:58, img:"assets/burger-frites.jpg", pos:"72% 60%"},
-    {n:"Attiéké", em:"🍚", g:"250 g", p:800, tag:"", d:"Semoule de manioc fermentée, légère et parfumée, préparée chaque matin.", inc:[], kcal:280, prot:3, lip:2, gluc:62, img:"assets/photo-8-03-28-39.jpg", pos:"18% 32%"},
-    {n:"Alloco", em:"🍌", g:"200 g", p:1000, tag:"", d:"Bananes plantains mûres coupées en biseau et frites, servies avec sauce pimentée aux oignons.", inc:["Sauce piment"], kcal:340, prot:2, lip:14, gluc:56, img:"assets/photo-25-02-59-49.jpg", pos:"78% 20%"},
-  ]},
-  { cat:"Boissons", plats:[
-    {n:"Jus d'ananas pressé", em:"🍍", g:"40 cl", p:1000, tag:"Frais", d:"Ananas pain de sucre pressé à la commande, sans sucre ajouté, servi avec glace pilée.", inc:["Glaçons"], kcal:180, prot:1, lip:0, gluc:44, img:"assets/generated-drinks-4k.png", pos:"16% 50%"},
-    {n:"Bissap glacé", em:"🌺", g:"40 cl", p:800, tag:"Frais", d:"Infusion de fleurs d'hibiscus à la menthe et au gingembre, légèrement sucrée et servie très fraîche.", inc:["Menthe"], kcal:120, prot:0, lip:0, gluc:30, img:"assets/generated-drinks-4k.png", pos:"50% 50%"},
-    {n:"Sucrerie", em:"🥤", g:"33 cl", p:600, tag:"", d:"Boisson gazeuse au choix parmi notre sélection, servie fraîche à la bouteille.", inc:["Glaçons"], kcal:140, prot:0, lip:0, gluc:36, img:"assets/generated-drinks-4k.png", pos:"84% 50%"},
-  ]},
+  C("Petits déjeuners",A+"breakfast-menu.webp",[
+    I("Petit déjeuner simple",1000,{g:"Thé + pain + œuf",d:"Thé, pain et œuf.",tag:"Matin",pos:"18% 20%"}),
+    I("Omelette nature",500,{g:"1 portion",tag:"Matin",pos:"18% 20%"}),
+    I("Petit déjeuner complet",1500,{g:"Thé + pain + œuf + salade",d:"Thé, pain, œuf et salade.",tag:"Matin",pos:"18% 20%"}),
+    I("Œuf au plat",1000,{g:"1 portion",tag:"Matin",pos:"78% 78%"}),
+    I("Petit déjeuner composé",3000,{g:"Jus + croissant + omelette + salade",d:"Jus naturel, croissant, omelette et salade.",tag:"Matin",pos:"80% 78%"}),
+    I("Petit déjeuner Maxence",3500,{g:"Sandwich + thé + œuf",d:"Sandwich, thé et œuf.",tag:"Maison",pos:"18% 78%"}),
+    I("Petit déjeuner spécial",5000,{g:"Avoine + croissant + fruits",d:"Flocons d’avoine, croissant et brochette de fruits.",tag:"Spécial",pos:"78% 20%"}),
+    I("Omelette fromage",1500,{g:"1 portion",pos:"18% 20%"}),
+    I("Omelette fromage-jambon",2500,{g:"1 portion",pos:"18% 20%"})
+  ]),
+
+  C("Boissons chaudes",A+"breakfast-menu.webp",[
+    I("Thé mojito",2000,{g:"1 tasse",em:"🍵",pos:"87% 62%"}),
+    I("Thé nature",500,{g:"1 tasse",em:"🍵",pos:"87% 62%"}),
+    I("Thé vert au miel",1500,{g:"1 tasse",em:"🍵",pos:"87% 62%"}),
+    I("Thé Maxence",2000,{g:"1 tasse",em:"🍵",tag:"Maison",pos:"87% 62%"}),
+    I("Café au lait",500,{g:"1 tasse",em:"☕",pos:"87% 62%"}),
+    I("Lait chaud",1500,{g:"1 tasse",em:"🥛",pos:"87% 62%"}),
+    I("Thé au gingembre",1500,{g:"1 tasse",em:"🍵",pos:"87% 62%"}),
+    I("Thé digestif",2500,{g:"Ail + citron + miel + basilic africain",d:"Ail, citron, miel et basilic africain.",em:"🍵",pos:"87% 62%"})
+  ]),
+
+  C("Crêpes",A+"crepes.jpg",[
+    I("Au sucre",1500,{g:"1 crêpe"}), I("Rhum-sucre",2500,{g:"1 crêpe"}),
+    I("Confiture",2000,{g:"1 crêpe"}), I("Jambon",2000,{g:"1 crêpe"}),
+    I("Jambon-fromage",2500,{g:"1 crêpe"}), I("Chocolat",2000,{g:"1 crêpe"}),
+    I("Miel",1500,{g:"1 crêpe"})
+  ]),
+
+  C("Entrées",A+"photo-15-03-28-39.jpg",[
+    I("Salade verte",2000,{g:"1 assiette",img:A+"photo-15-03-28-39.jpg",pos:"70% 35%",tag:"Frais"}),
+    I("Salade béninoise",2500,{g:"1 assiette",img:A+"photo-11-02-59-49.jpg",tag:"Frais"}),
+    I("Salade mexicaine",3000,{g:"1 assiette",img:A+"photo-11-02-59-49.jpg",tag:"Frais"}),
+    I("Salade russe",3500,{g:"1 assiette",img:A+"photo-15-03-28-39.jpg",tag:"Frais"}),
+    I("Salade royale",4000,{g:"1 assiette",img:A+"photo-11-02-59-49.jpg",tag:"Frais"}),
+    I("Hors-d’œuvre chaud",3000,{g:"1 assiette",img:A+"photo-4-03-28-39.jpg"}),
+    I("Hors-d’œuvre froid",3000,{g:"1 assiette",img:A+"photo-15-03-28-39.jpg",tag:"Frais"}),
+    I("Salade composée",3500,{g:"1 assiette",img:A+"photo-15-03-28-39.jpg",tag:"Frais"}),
+    I("Salade Maxence",5000,{g:"Grande assiette",img:A+"photo-11-02-59-49.jpg",tag:"Maison"})
+  ]),
+
+  C("Viandes",A+"plat-signature.jpg",[
+    I("Boyaux de bœuf + accompagnement",5000,{img:A+"photo-24-02-59-49.jpg",g:"Accompagnement inclus"}),
+    I("1/2 poulet + accompagnement",3500,{img:A+"photo-9-02-59-49.jpg",g:"Accompagnement inclus"}),
+    I("Poulet complet + accompagnement",6000,{img:A+"photo-7-02-59-49.jpg",g:"Accompagnement inclus",tag:"À partager"}),
+    I("1/2 lapin braisé/frit + accompagnement",6000,{img:A+"photo-10-02-59-49.jpg",g:"Accompagnement inclus"}),
+    I("Lapin braisé/frit + accompagnement",12000,{img:A+"photo-10-02-59-49.jpg",g:"Accompagnement inclus",tag:"À partager"}),
+    I("Mouton + accompagnement",4000,{img:A+"photo-5-02-59-49.jpg",g:"Accompagnement inclus"}),
+    I("Pintade + accompagnement",10000,{img:A+"photo-18-02-59-49.jpg",g:"Accompagnement inclus"}),
+    I("Aileron + accompagnement",3500,{img:A+"photo-8-02-59-49.jpg",g:"Accompagnement inclus"}),
+    I("Steak de bœuf + accompagnement",6000,{img:A+"photo-5-02-59-49.jpg",g:"Accompagnement inclus"}),
+    I("Viande de bœuf + accompagnement",6000,{img:A+"plat-signature.jpg",g:"Accompagnement inclus"}),
+    I("Langue de bœuf sautée",12000,{img:A+"photo-24-02-59-49.jpg",g:"1 portion"}),
+    I("Côte de bœuf braisée",7000,{img:A+"plat-signature.jpg",g:"1 portion",tag:"Braisé"}),
+    I("Côte d’agneau braisée",8000,{img:A+"plat-signature.jpg",g:"1 portion",tag:"Braisé"}),
+    I("Poulet pané",5000,{img:A+"burger-frites.jpg",g:"1 portion"}),
+    I("Poulet rôti au beurre",7000,{img:A+"photo-7-02-59-49.jpg",g:"1 portion"}),
+    I("Poulet mayo",4000,{img:A+"photo-4-03-28-39.jpg",g:"1 portion"})
+  ]),
+
+  C("Poissons",A+"photo-14-03-28-39.jpg",[
+    I("Sol",5000,{img:A+"photo-6-02-59-49.jpg"}), I("Darne de poisson",3000,{img:A+"photo-25-02-59-49.jpg"}),
+    I("Tilapia",4000,{img:A+"photo-14-03-28-39.jpg"}),
+    Q("Tilapia gros","6 000 / 7 000 / 10 000 F",{img:A+"photo-14-03-28-39.jpg",g:"Selon la taille",tag:"Prix selon taille"}),
+    I("Bar",8000,{img:A+"photo-1-02-59-49.jpg"}), I("Faux bar",5000,{img:A+"photo-8-03-28-39.jpg"}),
+    I("MTN",5000,{img:A+"photo-6-03-28-39.jpg"}), I("Filet de bar",7000,{img:A+"photo-25-02-59-49.jpg"}),
+    I("Poisson capitaine",10000,{img:A+"photo-14-02-59-49.jpg"}), I("Soupe de poisson",5000,{img:A+"photo-11-03-28-39.jpg"}),
+    I("Daurade",3000,{img:A+"photo-10-03-28-39.jpg"})
+  ]),
+
+  C("Brochettes",A+"photo-16-03-28-39.jpg",[
+    I("Gésier",1000,{g:"1 brochette"}), I("Escargot",2500,{g:"1 brochette",img:A+"photo-3-02-59-49.jpg"}),
+    I("Poulet",2000,{g:"1 brochette"}), I("Mouton",2000,{g:"1 brochette"}),
+    I("Bœuf",2000,{g:"1 brochette"})
+  ]),
+
+  C("Accompagnements",A+"photo-16-03-28-39.jpg",[
+    I("Riz",1000,{img:A+"photo-18-02-59-49.jpg",pos:"62% 20%"}), I("Frites",1000,{img:A+"burger-frites.jpg",pos:"76% 62%"}),
+    I("Alloco",1000,{img:A+"photo-25-02-59-49.jpg",pos:"80% 15%"}), I("Attiéké",1000,{img:A+"photo-8-03-28-39.jpg",pos:"70% 55%"}),
+    I("Couscous",1000,{img:A+"photo-23-02-59-49.jpg",pos:"55% 70%"}), I("Haricots verts",1500,{img:A+"plat-signature.jpg",pos:"84% 18%"}),
+    I("Pommes sautées",2500,{img:A+"photo-16-03-28-39.jpg",pos:"55% 78%"}), I("Plantain vapeur",2000,{img:A+"photo-25-02-59-49.jpg",pos:"70% 14%"}),
+    I("Légumes sautés",2500,{img:A+"photo-7-03-28-39.jpg",pos:"76% 35%"}), I("Akassa",500,{img:A+"photo-13-02-59-49.jpg",pos:"30% 68%"}),
+    I("Pâte blanche, rouge ou noire",500,{img:A+"photo-17-02-59-49.jpg",pos:"20% 16%"}), I("Agbéli",500,{img:A+"photo-19-02-59-49.jpg",pos:"40% 78%"}),
+    I("Manwê",500,{img:A+"photo-13-02-59-49.jpg",pos:"35% 70%"}), I("Piron",500,{img:A+"plat-signature.jpg",pos:"25% 20%"}),
+    I("Petits pois verdoyants",3000,{img:A+"photo-25-02-59-49.jpg",pos:"45% 55%"})
+  ]),
+
+  C("Spécialités africaines",A+"plat-signature.jpg",[
+    I("Sauce graine royale",5000,{img:A+"photo-10-03-28-39.jpg"}), I("Poulet yassa",5000,{img:A+"photo-7-03-28-39.jpg"}),
+    I("Sauce tomate, poisson frais",5000,{img:A+"photo-11-03-28-39.jpg"}), I("Sauce crincrin",4000,{img:A+"photo-9-03-28-39.jpg"}),
+    I("Sauce gombo royale",4000,{img:A+"photo-5-03-28-39.jpg",tag:"Tradition"}), I("Sauce légumes royale (6 pièces)",5000,{img:A+"photo-17-02-59-49.jpg",imgs:[A+"photo-17-02-59-49.jpg",A+"photo-22-02-59-49.jpg"]}),
+    I("Sauce assrokouin",4000,{img:A+"photo-12-02-59-49.jpg"}), I("Sauce d’arachide",5000,{img:A+"photo-10-02-59-49.jpg"}),
+    I("Sauce gbota",8000,{img:A+"photo-17-02-59-49.jpg"}), Q("Monyo","3 500 / 4 000 / 5 000 F",{img:A+"photo-14-02-59-49.jpg",tag:"Selon la formule"}),
+    I("Dakouin",4000,{img:A+"photo-12-02-59-49.jpg"}), Q("Bomiwo","3 500 / 6 000 F",{img:A+"plat-signature.jpg",tag:"Selon la formule"}),
+    I("Pâte rouge + 1/2 poulet",4000,{img:A+"plat-signature.jpg",tag:"Complet"}), I("Sauce sésame (goussi)",4000,{img:A+"photo-13-02-59-49.jpg"}),
+    I("Sauce haricot",4000,{img:A+"photo-9-03-28-39.jpg"}), I("Sauce poisson sec",5000,{img:A+"photo-16-02-59-49.jpg"}),
+    I("Tchouktouya mouton",5000,{img:A+"photo-5-02-59-49.jpg"}), I("Tchouktouya bœuf",4000,{img:A+"photo-5-02-59-49.jpg"})
+  ]),
+
+  C("Spécialités européennes & italiennes",A+"photo-23-02-59-49.jpg",[
+    I("Poulet à la crème et aux champignons",6000,{img:A+"photo-4-03-28-39.jpg",tag:"Europe"}),
+    I("Bœuf bourguignon",6500,{img:A+"photo-23-02-59-49.jpg",tag:"Europe"}), I("Poulet basquaise",5500,{img:A+"photo-7-03-28-39.jpg",tag:"Europe"}),
+    I("Escalope de poulet sauce moutarde",6000,{img:A+"photo-4-03-28-39.jpg",tag:"Europe"}), I("Filet de poisson sauce beurre-citron",6000,{img:A+"photo-8-03-28-39.jpg",tag:"Europe"}),
+    I("Escalope milanaise aux spaghetti",5500,{img:A+"photo-21-02-59-49.jpg",tag:"Italie"}), I("Poulet à l’italienne",5000,{img:A+"photo-13-03-28-39.jpg",tag:"Italie"}),
+    I("Pâtes bolognaises au bœuf",3500,{img:A+"spaghetti-maxence.jpg",tag:"Italie"}), I("Pâtes carbonara",3500,{img:A+"photo-1-03-28-39.jpg",tag:"Italie"}),
+    I("Lasagnes à la viande",5000,{img:A+"photo-29-02-59-49.jpg",tag:"Italie"}), I("Paella Maxence",6500,{img:A+"photo-18-02-59-49.jpg",tag:"Maison"}),
+    I("Rognons sauce crème",6000,{img:A+"photo-23-02-59-49.jpg"}), I("Rognons à la moutarde",6000,{img:A+"photo-23-02-59-49.jpg"}),
+    I("Cuisse de poulet à l’estragon",4000,{img:A+"photo-4-03-28-39.jpg"}), I("Émincé de volaille au curry",5000,{img:A+"photo-3-03-28-39.jpg"})
+  ]),
+
+  C("Pâtes",A+"spaghetti-maxence.jpg",[
+    I("Spaghetti bolognaise",3000,{img:A+"spaghetti-maxence.jpg"}), I("Spaghetti Maxence",3500,{img:A+"spaghetti-maxence.jpg",tag:"Maison"}),
+    I("Carbonara",3000,{img:A+"photo-1-03-28-39.jpg"}), I("Spaghetti (œuf, saucisse)",1000,{img:A+"photo-1-03-28-39.jpg"}),
+    I("Spaghetti (œuf, saucisse, viande)",1500,{img:A+"photo-2-03-28-39.jpg"}),
+    I("Spaghetti (œuf, saucisse, viande, frites/alloco)",2000,{img:A+"photo-21-02-59-49.jpg",tag:"Complet"}),
+    I("Spaghetti sardine",2000,{img:A+"photo-25-02-59-49.jpg"}), I("Spaghetti aileron",3000,{img:A+"photo-2-03-28-39.jpg"}),
+    I("Spaghetti + 1/4 poulet",2000,{img:A+"photo-21-02-59-49.jpg"}), I("Spaghetti + 1/2 poulet",3500,{img:A+"photo-21-02-59-49.jpg"}),
+    I("Coquillettes (œuf, viande, saucisse, sardine)",3000,{img:A+"photo-15-03-28-39.jpg"}), I("Coquillettes",5000,{img:A+"photo-15-03-28-39.jpg"})
+  ]),
+
+  C("Loaded fries",A+"snacks-desserts.webp",[
+    I("Frites gratinées au fromage",2000,{g:"1 portion",pos:"20% 20%"}), I("Frites + poulet + fromage",3000,{g:"1 portion",pos:"20% 20%"}),
+    I("Frites + viande hachée + fromage",3500,{g:"1 portion",pos:"20% 20%"}),
+    I("Frites Maxence",4000,{g:"Poulet + viande hachée + fromage + saucisse",d:"Frites, poulet, viande hachée, fromage et saucisse.",tag:"Maison",pos:"20% 20%"})
+  ]),
+
+  C("Chawarmas",A+"chawarma-poulet.png",[
+    I("Chawarma viande de bœuf",1500,{img:A+"chawarma-viande.png",fit:"contain",em:"🥙"}),
+    I("Chawarma poulet",2000,{img:A+"chawarma-poulet.png",fit:"contain",em:"🌯"}),
+    I("Chawarma mixte",2500,{img:A+"chawarma-mixte-xxl.png",fit:"contain",em:"🌯"}),
+    I("Chawarma Maxence",3500,{img:A+"chawarma-mixte-xxl.png",fit:"contain",tag:"Maison",em:"🌯"}),
+    I("Chawarma végétarien",2000,{img:A+"chawarma-mixte-xxl.png",fit:"contain",em:"🌯"}),
+    I("Chawarma poisson",2500,{img:A+"chawarma-poulet.png",fit:"contain",em:"🌯"}),
+    I("Chawarma jambon",3000,{img:A+"chawarma-viande.png",fit:"contain",em:"🌯"}),
+    I("Chawarma thon",3000,{img:A+"chawarma-poulet.png",fit:"contain",em:"🌯"}),
+    I("Chawarma saucisson",2000,{img:A+"chawarma-viande.png",fit:"contain",em:"🌯"}),
+    I("Chawarma assiette",2500,{img:A+"assiette-chawarma.png",em:"🍛"}),
+    I("Chawarma mouton",3000,{img:A+"chawarma-viande.png",fit:"contain",em:"🌯"}),
+    I("Chawarma sardine",2000,{img:A+"chawarma-poulet.png",fit:"contain",em:"🌯"})
+  ]),
+
+  C("Burgers, sandwichs & paninis",A+"snacks-desserts.webp",[
+    I("Hamburger + frites",3000,{img:A+"burger-frites.jpg",imgs:[A+"burger-frites.jpg",A+"photo-12-03-28-39.jpg"],tag:"Menu"}), I("Hamburger",2500,{img:A+"burger-frites.jpg"}),
+    I("Cheeseburger",3000,{img:A+"burger-frites.jpg"}), I("Double burger",3500,{img:A+"burger-frites.jpg"}), I("Royal burger",4000,{img:A+"burger-frites.jpg",tag:"Royal"}),
+    I("Sandwich omelette",1000,{img:A+"breakfast-menu.webp",pos:"18% 78%"}), I("Sandwich thon",1500,{pos:"78% 20%"}),
+    I("Sandwich jambon",2000,{pos:"78% 20%"}), I("Sandwich végétarien au fromage",2000,{pos:"78% 20%"}),
+    I("Sandwich viande hachée",1500,{pos:"78% 20%"}), I("Sandwich saucisson",1500,{pos:"78% 20%"}), I("Sandwich poulet",2000,{pos:"78% 20%"}),
+    I("Croque-monsieur",1500,{pos:"78% 20%"}), I("Croque-madame",2000,{pos:"78% 20%"}), I("Sandwich Maxence",2500,{pos:"78% 20%",tag:"Maison"}),
+    I("Panini fromage-saucisson",2000,{pos:"78% 20%"}), I("Panini fromage-saucisson-viande hachée",2500,{pos:"78% 20%"}),
+    I("Royal panini",3000,{g:"Fromage + saucisson + poulet + viande hachée",d:"Fromage, saucisson, poulet et viande hachée.",pos:"78% 20%",tag:"Royal"}),
+    I("Tacos",3000,{pos:"78% 20%"})
+  ]),
+
+  C("Pizzas",A+"photo-30-02-59-49.jpg",[
+    I("Pizza Margherita",4500,{d:"Fromage, tomate, oignon, poivron et saucisse.",img:A+"photo-28-02-59-49.jpg"}),
+    I("Pizza Reine",5000,{d:"Fromage, champignon, jambon et olive noire.",img:A+"photo-15-02-59-49.jpg"}),
+    I("Pizza végétarienne",5500,{d:"Fromage, champignon, haricot vert, maïs doux, poivron, oignon et tomate.",img:A+"photo-30-02-59-49.jpg"}),
+    I("Pizza 4 saisons",6500,{d:"Fromage, jambon, maïs doux, poivron, œuf, oignon, tomate et fromage doux.",img:A+"photo-30-02-59-49.jpg"}),
+    I("Pizza américaine",6500,{d:"Fromage, jambon, viande hachée, champignon, tomate et oignon.",img:A+"photo-29-02-59-49.jpg"}),
+    I("Pizza royale",6500,{d:"Fromage, poulet, poivron, oignon, tomate et jambon.",img:A+"photo-13-03-28-39.jpg"}),
+    I("Pizza pêcheur",7500,{d:"Crevette, thon, poivron, oignon, tomate, mozzarella et fruits de mer.",img:A+"photo-13-03-28-39.jpg"}),
+    I("Pizza Maxence",8500,{d:"Fromage, saucisson, viande hachée, poulet, maïs doux, poivron, oignon, tomate, jambon et crevette.",img:A+"photo-30-02-59-49.jpg",tag:"Signature"}),
+    I("Quiche lorraine",6000,{img:A+"photo-28-02-59-49.jpg"})
+  ]),
+
+  C("Desserts",A+"snacks-desserts.webp",[
+    O("Salade de fruits",[["Petite",3000],["Grande",5000]],{g:"Petite ou grande",pos:"20% 80%",tag:"Frais"}),
+    I("Fruit de saison",1000,{g:"1 portion",pos:"20% 80%",tag:"Frais"}), I("Lait caillé",1000,{g:"1 portion",pos:"80% 80%"}),
+    I("Brochette de fruits",2000,{g:"1 brochette",pos:"20% 80%",tag:"Frais"}), I("Glaces",1000,{g:"1 portion",pos:"20% 80%"}),
+    I("3 boules de glace",2500,{g:"3 boules",pos:"20% 80%"}), I("Part de gâteau",1500,{g:"1 part",pos:"80% 80%"}),
+    I("Mousse au chocolat",4000,{g:"1 portion",pos:"80% 80%"}),
+    Q("Gâteau d’anniversaire","À partir de 8 000 F",{g:"Sur commande",pos:"80% 80%",tag:"Sur commande"})
+  ]),
+
+  C("Jus naturels",A+"jus-ananas.jpg",[
+    O("Goyave",[["Verre",2000],["Litre",3500]],{img:A+"boisson-bissap.jpg",tag:"Verre / litre"}),
+    O("Ananas",[["Verre",1500],["Litre",2500]],{img:A+"jus-ananas.jpg",tag:"Verre / litre"}),
+    O("Gingembre",[["Verre",2000],["Litre",4000]],{img:A+"drinks-menu.webp",pos:"50% 50%",tag:"Verre / litre"}),
+    O("Pastèque",[["Verre",2000],["Litre",3500]],{img:A+"boisson-bissap.jpg",tag:"Verre / litre"}),
+    O("Orange",[["Verre",2000],["Litre",3500]],{img:A+"drinks-menu.webp",pos:"16% 50%",tag:"Verre / litre"}),
+    O("Mangue",[["Verre",2000],["Litre",3000]],{img:A+"jus-ananas.jpg",tag:"Verre / litre"}),
+    O("Citron",[["Verre",1000],["Litre",1500]],{img:A+"drinks-menu.webp",pos:"16% 50%",tag:"Verre / litre"}),
+    O("Passion",[["Verre",2500],["Litre",4500]],{img:A+"cocktails-menu.webp",pos:"20% 20%",tag:"Verre / litre"}),
+    O("Mixte",[["Verre",2000],["Litre",3500]],{img:A+"boisson-bissap.jpg",tag:"Verre / litre"})
+  ]),
+
+  C("Smoothies",A+"smoothies-bubbletea.webp",[
+    O("Mangue + ananas",[["Verre",2000],["Litre",3800]],{pos:"20% 20%",tag:"Verre / litre"}),
+    O("Pastèque + ananas + orange",[["Verre",2000],["Litre",3500]],{pos:"80% 20%",tag:"Verre / litre"}),
+    O("Ananas + mangue + gingembre",[["Verre",2000],["Litre",3500]],{pos:"20% 20%",tag:"Verre / litre"}),
+    O("Papaye + orange",[["Verre",1500],["Litre",2500]],{pos:"80% 20%",tag:"Verre / litre"}),
+    O("Mangue + orange + citron",[["Verre",2000],["Litre",3500]],{pos:"20% 20%",tag:"Verre / litre"}),
+    O("Citron + pamplemousse + gingembre",[["Verre",2500],["Litre",4500]],{pos:"80% 20%",tag:"Verre / litre"}),
+    O("Banane + ananas + mangue + yaourt",[["Verre",3000],["Litre",5500]],{pos:"20% 20%",tag:"Verre / litre"}),
+    O("Ananas + orange + lait de coco",[["Verre",2000],["Litre",3500]],{pos:"20% 20%",tag:"Verre / litre"}),
+    O("Orange + banane + miel + mangue + passion",[["Verre",3000],["Litre",5500]],{pos:"80% 20%",tag:"Verre / litre"})
+  ]),
+
+  C("Bubble tea",A+"smoothies-bubbletea.webp",[
+    Q("Maxence Brown Sugar","Tarif au bar",{d:"Lait en poudre, thé noir, sirop caramel, perles, crème et glaçons.",pos:"20% 80%",tag:"Création Maxence"}),
+    Q("Maxence Fraise","Tarif au bar",{d:"Thé vert ou noir, sirop de fraise, fraises découpées, perles aux fruits et glaçons.",pos:"80% 80%",tag:"Création Maxence"}),
+    Q("Maxence Mangue","Tarif au bar",{d:"Thé vert, purée de mangue, perles à la mangue, glaçons, lait en poudre et crème.",pos:"80% 80%",tag:"Création Maxence"}),
+    Q("Maxence Choco","Tarif au bar",{d:"Lait en poudre, thé léger, chocolat, perles et glaçons.",pos:"20% 80%",tag:"Création Maxence"})
+  ]),
+
+  C("Cocktails sans alcool",A+"cocktails-menu.webp",[
+    I("Maxence Passion",2000,{d:"Passion, orange et grenadine.",pos:"20% 20%",tag:"Sans alcool"}),
+    I("Tropical Maxence",2500,{d:"Ananas, mangue, passion et citron.",pos:"20% 20%",tag:"Sans alcool"}),
+    I("Virgin Mojito Maxence",2000,{d:"Citron, sucre café, menthe et eau gazeuse.",pos:"80% 20%",tag:"Sans alcool"}),
+    I("Sunset Maxence",2000,{d:"Orange, ananas et grenadine.",pos:"20% 20%",tag:"Sans alcool"}),
+    I("Mango Passion",2000,{d:"Mangue, passion et citron.",pos:"20% 20%",tag:"Sans alcool"}),
+    I("Watermelon Fresh",2000,{d:"Jus de pastèque, citron et menthe.",img:A+"smoothies-bubbletea.webp",pos:"80% 20%",tag:"Sans alcool"}),
+    I("Coco Tropical",2000,{d:"Lait de coco, mangue et ananas.",pos:"20% 80%",tag:"Sans alcool"}),
+    I("Cendrillon",2000,{d:"Citron, ananas, orange et sirop de grenadine.",pos:"20% 20%",tag:"Sans alcool"}),
+    I("Maxence Fraîcheur",2000,{d:"Lait Peak, sirop de menthe et glace.",pos:"20% 80%",tag:"Sans alcool"})
+  ]),
+
+  C("Cocktails alcoolisés",A+"cocktails-menu.webp",[
+    I("Tomate",2500,{d:"Sirop de grenadine et pastis.",pos:"20% 20%",tag:"Alcoolisé"}),
+    I("Perroquet",2500,{d:"Menthe, sirop, pastis et olive.",pos:"80% 20%",tag:"Alcoolisé"}),
+    I("Dry Martini",3500,{d:"Martini blanc, dry gin et olive.",pos:"80% 20%",tag:"Alcoolisé"}),
+    I("Perfect Martini",5000,{d:"Martini blanc, Martini rouge, dry gin et olive.",pos:"80% 20%",tag:"Alcoolisé"}),
+    I("Sweet Martini",3500,{d:"Martini rouge, dry gin et cerise.",pos:"20% 20%",tag:"Alcoolisé"}),
+    I("Tango",3500,{d:"Sirop de grenadine et bière.",pos:"20% 20%",tag:"Alcoolisé"}),
+    I("Mojito",3000,{d:"Menthe, citron, rhum blanc, sirop de canne et eau gazeuse.",pos:"80% 20%",tag:"Alcoolisé"}),
+    I("Cocktail Maxence Tropical",4000,{d:"Rhum, passion, ananas, orange et grenadine.",pos:"20% 20%",tag:"Alcoolisé"}),
+    I("Piña Colada",3500,{d:"Rhum blanc, citron vert, menthe, sirop de canne, jus d’ananas et lait de coco.",pos:"20% 80%",tag:"Alcoolisé"}),
+    I("Tequila Sunrise",3000,{d:"Tequila, orange et grenadine.",pos:"80% 80%",tag:"Alcoolisé"}),
+    I("Blue Lagoon",3000,{d:"Vodka, curaçao bleu, limonade et citron.",pos:"80% 80%",tag:"Alcoolisé"})
+  ]),
+
+  C("Boissons en bouteille",A+"boissons-sodas.jpg",[
+    Q("Bières disponibles","Tarif au bar",{d:"Pils, Flag, La Béninoise, Beaufort et Castel, selon disponibilité.",img:A+"boissons-bieres.jpg",fit:"contain",tag:"Prix au bar"}),
+    Q("Sodas disponibles","Tarif au bar",{d:"Sélection de sodas Youki et World Cola, selon disponibilité.",img:A+"boissons-sodas.jpg",fit:"contain",tag:"Prix au bar"}),
+    Q("Eaux minérales","Tarif au bar",{d:"Possotomè et FIFA, selon disponibilité.",img:A+"boissons-eaux.jpg",fit:"contain",tag:"Prix au bar"})
+  ])
 ];
 
-const fmt = n => n.toLocaleString('fr-FR') + " F";
-let panier = [], plaCourant = null, qte = 1;
+const fmt = n => Number(n).toLocaleString('fr-FR') + " F";
+const prix = p => p.priceLabel || (p.options
+  ? p.options.map(o=>`${o[0]} ${fmt(o[1])}`).join(" · ")
+  : `${p.prefix||""}${fmt(p.p)}`);
+let panier = [], plaCourant = null, qte = 1, optionCourante = 0;
 
 // onglets
 const cats = document.getElementById('cats');
@@ -1020,7 +1193,7 @@ const menu = document.getElementById('menu');
 CARTE.forEach((s,i)=>{
   const sec = document.createElement('section');
   sec.className = 'sec'; sec.id = 'sec'+i;
-  sec.innerHTML = `<div class="sec-h"><h2>${s.cat}</h2><em>${s.plats.length} plats</em></div>`;
+  sec.innerHTML = `<div class="sec-h"><h2>${s.cat}</h2><em>${s.plats.length} choix</em></div>`;
   const g = document.createElement('div'); g.className = 'grid';
   s.plats.forEach((p,j)=>{
     const c = document.createElement('div'); c.className='card';
@@ -1033,14 +1206,15 @@ CARTE.forEach((s,i)=>{
       <div class="body">
         <h4>${p.n}</h4>
         <div class="meta">${p.g}</div>
-        <div class="price">${fmt(p.p)}</div>
+        <div class="price${(p.options||p.priceLabel)?' multi':''}">${prix(p)}</div>
         <div class="acts">
           <button class="btn btn-voir" data-i="${i}" data-j="${j}">Voir</button>
-          <button class="btn btn-add" data-i="${i}" data-j="${j}" data-n="${p.n}">Ajouter</button>
+          <button class="btn btn-add" data-i="${i}" data-j="${j}" data-n="${p.n}" ${p.orderable===false?'disabled':''}>${p.orderable===false?'Au bar':(p.options?'Choisir':'Ajouter')}</button>
         </div>
       </div>`;
     c.querySelector('.btn-voir').onclick = ()=>ouvrir(i,j);
-    c.querySelector('.btn-add').onclick = ()=>{ ajouter(s.plats[j],1); };
+    const add = c.querySelector('.btn-add');
+    if(p.orderable!==false) add.onclick = ()=>{ p.options ? ouvrir(i,j) : ajouter(s.plats[j],1); };
     g.appendChild(c);
   });
   sec.appendChild(g); menu.appendChild(sec);
@@ -1048,7 +1222,7 @@ CARTE.forEach((s,i)=>{
 
 // fiche plat
 function ouvrir(i,j){
-  const p = CARTE[i].plats[j]; plaCourant = p; qte = 1;
+  const p = CARTE[i].plats[j]; plaCourant = p; qte = 1; optionCourante = 0;
   const photos = p.imgs && p.imgs.length ? p.imgs : (p.img ? [p.img] : []);
   document.getElementById('sheet').innerHTML = `
     <button class="close" onclick="fermer()">×</button>
@@ -1061,23 +1235,21 @@ function ouvrir(i,j){
     <div class="sheet-body">
       <h3>${p.n}</h3>
       <p class="compo">${p.d}</p>
+      ${p.options?`<div class="lbl">Choisissez le format</div>
+        <div class="options">${p.options.map((o,k)=>`<button class="opt${k===0?' on':''}" onclick="choisirOption(${k},this)">${o[0]}<span>${fmt(o[1])}</span></button>`).join('')}</div>`:''}
       ${p.inc.length?`<div class="lbl">Inclus dans la commande</div>
         <div class="chips">${p.inc.map(x=>`<span class="chip">✓ ${x}</span>`).join('')}</div>`:''}
-      <div class="lbl">Portion &amp; valeurs</div>
+      <div class="lbl">Informations</div>
       <div class="facts">
-        <div class="fact"><b>${p.g}</b><span>portion</span></div>
-        <div class="fact"><b>${p.kcal}</b><span>kcal</span></div>
-        <div class="fact"><b>${p.prot}</b><span>protéines</span></div>
-        <div class="fact"><b>${p.lip}</b><span>lipides</span></div>
-        <div class="fact"><b>${p.gluc}</b><span>glucides</span></div>
+        <div class="fact"><b>${p.g}</b><span>portion / formule</span></div>
+        <div class="fact"><b>À la commande</b><span>préparé par Maxence</span></div>
       </div>
     </div>
     <div class="sheet-bar">
-      <div class="nm"><p>${p.n}</p><b>${fmt(p.p)}</b></div>
-      <div class="qty">
-        <button onclick="majQ(-1)">−</button><b id="q">1</b><button onclick="majQ(1)">+</button>
-      </div>
-      <button class="add" onclick="ajouterDepuisFiche()">Ajouter</button>
+      <div class="nm"><p>${p.n}</p><b id="sheetPrice">${p.options?fmt(p.options[0][1]):prix(p)}</b></div>
+      ${p.orderable===false?`<button class="add" onclick="fermer()">Fermer</button>`:`
+        <div class="qty"><button onclick="majQ(-1)">−</button><b id="q">1</b><button onclick="majQ(1)">+</button></div>
+        <button class="add" onclick="ajouterDepuisFiche()">Ajouter</button>`}
     </div>`;
   document.getElementById('veil').classList.add('on');
   document.body.style.overflow='hidden';
@@ -1091,13 +1263,20 @@ function changerPhoto(b){
 }
 function fermer(){ document.getElementById('veil').classList.remove('on'); document.body.style.overflow=''; }
 document.getElementById('veil').onclick = e => { if(e.target.id==='veil') fermer(); };
-function majQ(d){ qte = Math.max(1, qte+d); document.getElementById('q').textContent = qte; }
-function ajouterDepuisFiche(){ ajouter(plaCourant, qte); fermer(); }
+function majQ(d){ qte = Math.max(1, qte+d); const q=document.getElementById('q'); if(q) q.textContent = qte; }
+function choisirOption(k,b){
+  optionCourante=k;
+  b.parentElement.querySelectorAll('.opt').forEach(x=>x.classList.toggle('on',x===b));
+  document.getElementById('sheetPrice').textContent=fmt(plaCourant.options[k][1]);
+}
+function ajouterDepuisFiche(){ ajouter(plaCourant, qte, plaCourant.options?plaCourant.options[optionCourante]:null); fermer(); }
 
-function ajouter(p, n){
-  const ex = panier.find(x=>x.n===p.n);
-  if(ex) ex.q += n; else panier.push({n:p.n, p:p.p, q:n, em:p.em, img:p.img||''});
-  majPanier(); toast(`${p.n} ajouté`);
+function ajouter(p, n, option=null){
+  const nom = option ? `${p.n} — ${option[0]}` : p.n;
+  const montant = option ? option[1] : p.p;
+  const ex = panier.find(x=>x.n===nom);
+  if(ex) ex.q += n; else panier.push({n:nom, base:p.n, p:montant, q:n, em:p.em, img:p.img||''});
+  majPanier(); toast(`${nom} ajouté`);
 }
 function majPanier(){
   const nb = panier.reduce((s,x)=>s+x.q,0);
@@ -1110,9 +1289,14 @@ function majPanier(){
 /* reflète le panier sur les boutons Ajouter : ✓ ×N et couleur verte */
 function majBoutonsAjout(){
   document.querySelectorAll('.btn-add').forEach(b=>{
-    const it = panier.find(x=>x.n===b.dataset.n);
-    if(it){ b.classList.add('added'); b.textContent = `✓ ×${it.q}`; }
-    else{ b.classList.remove('added'); b.textContent = 'Ajouter'; }
+    if(b.disabled) return;
+    const nb = panier.filter(x=>(x.base||x.n)===b.dataset.n).reduce((s,x)=>s+x.q,0);
+    if(nb){ b.classList.add('added'); b.textContent = `✓ ×${nb}`; }
+    else{
+      b.classList.remove('added');
+      const p=CARTE[Number(b.dataset.i)].plats[Number(b.dataset.j)];
+      b.textContent = p.options ? 'Choisir' : 'Ajouter';
+    }
   });
 }
 let tmr;
@@ -1120,7 +1304,7 @@ function toast(t){
   const el = document.getElementById('toast'); el.textContent = t; el.classList.add('on');
   clearTimeout(tmr); tmr = setTimeout(()=>el.classList.remove('on'), 1800);
 }
-const WA_RESTO = "2290100000000";
+const WA_RESTO = "2290194306946";
 let mode = null, msgFinal = "";
 
 function recapHTML(){
