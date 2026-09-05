@@ -2,8 +2,13 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Menu — Restaurant Maxence</title>
+<meta name="description" content="Menu officiel du Restaurant Maxence à Abomey-Calavi : spécialités béninoises, grillades, poissons, pizzas, chawarmas et boissons.">
+<meta name="theme-color" content="#17120F">
+<link rel="icon" type="image/jpeg" href="assets/logo-maxence.jpg">
+<link rel="preload" as="image" href="assets/logo-maxence.jpg">
+<link rel="preload" as="image" href="assets/intro-chef-reveal-4k.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -527,18 +532,144 @@ footer b{color:var(--braise)}
 .fini .rbtns .non{background:none;border:1px solid var(--ligne);border-radius:22px;color:var(--os-doux);
   padding:11px 14px;font-family:'Figtree';font-size:13px;cursor:pointer}
 @media(prefers-reduced-motion:reduce){.feu *,.sup *,.mode,.mode::after,.mode .ico i,.fini .wa,.fini .wa::before{animation-duration:.01s!important;animation-iteration-count:1!important}}
+
+/* ── IDENTITÉ VISUELLE & PHOTOS MAXENCE ── */
+body{
+  background:
+    radial-gradient(circle at 12% 0%,rgba(16,109,54,.12),transparent 30rem),
+    radial-gradient(circle at 92% 18%,rgba(242,196,107,.07),transparent 28rem),
+    var(--charbon);
+}
+.mark{width:46px;height:46px;border-radius:50%;padding:2px;background:#080806;border:1px solid rgba(242,196,107,.55);overflow:hidden}
+.mark img{width:100%;height:100%;display:block;object-fit:contain;border-radius:50%}
+.card{box-shadow:0 14px 30px rgba(0,0,0,.16)}
+@media(hover:hover){.card:hover{transform:translateY(-4px);border-color:rgba(242,196,107,.3);box-shadow:0 20px 38px rgba(0,0,0,.28)}}
+.ph{overflow:hidden;background:#15100d}
+.ph.has-photo .plate,.ph.has-photo>span{display:none}
+.ph .menu-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:var(--fit,cover);object-position:var(--pos,50% 50%);display:block;transform:scale(1.015);transition:transform .55s ease}
+@media(hover:hover){.card:hover .menu-photo{transform:scale(1.07)}}
+.ph.has-photo::after{content:"";position:absolute;inset:auto 0 0;height:36%;background:linear-gradient(transparent,rgba(10,7,5,.58));pointer-events:none}
+.tagpop{z-index:2;box-shadow:0 5px 16px rgba(0,0,0,.24)}
+.body h4{font-size:14.5px}
+.hero-ph.has-photo{display:block;overflow:hidden;background:#100d0b}
+.hero-ph.has-photo .plate,.hero-ph.has-photo>span{display:none}
+.hero-photo{width:100%;height:100%;object-fit:var(--fit,cover);object-position:var(--pos,50% 50%);display:block}
+.gallery{display:flex;gap:9px;overflow-x:auto;padding:12px 16px 2px;scrollbar-width:none;background:#17120f}
+.gallery::-webkit-scrollbar{display:none}
+.gallery button{width:76px;height:58px;flex:0 0 76px;border:2px solid transparent;border-radius:10px;padding:0;overflow:hidden;background:#211915;cursor:pointer;opacity:.7;transition:.2s}
+.gallery button.on{opacity:1;border-color:var(--safran);transform:translateY(-2px)}
+.gallery img{width:100%;height:100%;display:block;object-fit:cover}
+.photo-note{font-size:11px;color:var(--os-doux);margin-top:-7px;margin-bottom:15px}
+.pn-li .em{overflow:hidden}
+.pn-li .em img{width:100%;height:100%;display:block;object-fit:cover}
+
+/* ── ACCUEIL CINÉMATIQUE : LOGO → CLOCHE → PLAT CHAUD ── */
+.splash{background:
+  radial-gradient(circle at 50% 42%,rgba(0,105,48,.32),transparent 38rem),
+  linear-gradient(145deg,#050604 0%,#10150d 48%,#090705 100%)}
+.splash .halo{width:min(115vw,900px);background:radial-gradient(circle,rgba(242,196,107,.18),rgba(0,104,47,.1) 38%,transparent 68%)}
+.splash .inner{width:min(96vw,920px);height:min(88vh,760px);display:grid;place-items:center;padding:22px}
+.splash-story{position:relative;width:100%;height:100%;display:grid;place-items:center;isolation:isolate}
+.splash-logo-shot,.splash-reveal-shot{position:absolute;inset:0;display:grid;place-items:center}
+.splash-logo-shot{z-index:1;animation:logoCinematic 5.2s cubic-bezier(.55,.02,.2,1) .1s forwards;transform-origin:73% 43%;opacity:0}
+.splash-logo-shot img{width:min(86vw,650px);height:min(72vh,600px);object-fit:contain;filter:drop-shadow(0 24px 56px rgba(0,0,0,.7))}
+.splash-reveal-shot{z-index:2;opacity:0;transform:scale(1.15);animation:revealCinematic 3.8s cubic-bezier(.2,.72,.24,1) 3.5s forwards}
+.splash-reveal-shot::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,5,3,.66),transparent 40%);pointer-events:none}
+.splash-reveal-shot img{width:min(94vw,900px);max-height:min(76vh,650px);aspect-ratio:16/9;object-fit:cover;border-radius:24px;border:1px solid rgba(242,196,107,.44);box-shadow:0 32px 90px rgba(0,0,0,.72),0 0 70px rgba(0,117,53,.16)}
+.steam{position:absolute;left:50%;top:55%;width:190px;height:160px;transform:translate(-10%,-50%);z-index:3;pointer-events:none}
+.steam i{position:absolute;bottom:0;width:15px;height:95px;border-radius:50%;border-left:3px solid rgba(255,255,255,.5);filter:blur(2px);opacity:0;animation:steamRise 2.4s ease-in-out infinite}
+.steam i:nth-child(1){left:15%;animation-delay:3.8s}.steam i:nth-child(2){left:46%;height:125px;animation-delay:4.25s}.steam i:nth-child(3){left:76%;height:105px;animation-delay:4.7s}
+.splash-copy{position:absolute;z-index:4;left:0;right:0;bottom:4%;text-align:center;padding:0 18px;opacity:0;animation:copyReveal .7s ease 4.7s forwards;text-shadow:0 4px 18px rgba(0,0,0,.9)}
+.splash-copy h1{font-size:clamp(27px,5.4vw,48px);margin:0 0 5px;color:#fff}
+.splash-copy .sous{font-size:clamp(10px,2.4vw,13px);letter-spacing:.22em;color:var(--safran);opacity:1;animation:none}
+.splash-copy .table{margin:8px 0 0;font-size:13px;color:#f5ede3;opacity:.92;animation:none}
+.splash .fil{position:absolute;z-index:5;left:50%;bottom:0;transform:translateX(-50%);margin:0;width:min(220px,45vw);opacity:1;animation:none}
+.splash .fil i{animation:remplir 6.8s cubic-bezier(.35,0,.18,1) .35s forwards}
+.splash .skip{z-index:6;color:#a99b8d;bottom:24px}
+@keyframes logoCinematic{
+  0%{opacity:0;transform:scale(.72) rotate(-2deg)}
+  16%,45%{opacity:1;transform:scale(1) rotate(0)}
+  68%{opacity:1;transform:scale(2.45) translate(-7%,4%)}
+  82%,100%{opacity:0;transform:scale(2.8) translate(-8%,4%);filter:blur(4px)}
+}
+@keyframes revealCinematic{0%{opacity:0;transform:scale(1.16)}18%,82%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1.035)}}
+@keyframes copyReveal{to{opacity:1;transform:translateY(-4px)}}
+@keyframes steamRise{0%{opacity:0;transform:translateY(22px) scaleX(.7)}28%{opacity:.62}100%{opacity:0;transform:translateY(-85px) translateX(24px) scaleX(1.25)}}
+@media(max-width:620px){
+  .splash .inner{height:82vh;padding:12px}
+  .splash-reveal-shot img{width:94vw;border-radius:18px}
+  .splash-copy{bottom:8%}
+  .steam{top:54%;left:48%;transform:translate(-12%,-50%) scale(.75)}
+}
+@media(prefers-reduced-motion:reduce){
+  .splash-logo-shot{display:none}.splash-reveal-shot{opacity:1;transform:none;animation:none}
+  .splash-copy{opacity:1;animation:none}.steam{display:none}.splash .fil i{width:100%;animation:none}
+}
+
+/* ── PRIORITÉ MOBILE : consultation après scan du QR code ── */
+.cat,.btn,.site-link,.sheet-bar .add,.ck-go{min-height:44px}
+@media(max-width:480px){
+  body{padding-bottom:104px}
+  .top{padding-top:env(safe-area-inset-top)}
+  .top-in{padding:10px 12px 0;gap:9px}
+  .mark{width:42px;height:42px}
+  .brand{min-width:0}
+  .brand h1{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand span{font-size:11px;letter-spacing:.35px}
+  .site-link{font-size:12px;padding:7px 10px;display:inline-flex;align-items:center;justify-content:center}
+  .cats{padding:9px 12px 11px;gap:7px;scroll-padding-inline:12px}
+  .cat{font-size:13px;padding:9px 14px}
+  .spot{margin:12px 12px 0;padding:15px;border-radius:16px}
+  .spot h3{font-size:18px}.spot p{font-size:13px}
+  .sec{padding:22px 12px 2px}
+  .sec-h{margin-bottom:12px}.sec-h h2{font-size:20px}.sec-h em{font-size:10px}
+  .grid{gap:10px}
+  .card{border-radius:14px}
+  .body{padding:10px}
+  .body h4{font-size:14px;line-height:1.3}
+  .body .meta{font-size:11px}.body .price{font-size:16px}
+  .acts{gap:6px}.btn{font-size:12px;padding:8px 5px}
+  .sheet{max-height:96dvh;padding-bottom:96px}
+  .sheet-body{padding:17px 16px 0}
+  .sheet-body h3{font-size:23px}.compo{font-size:15px}
+  .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .fact b{font-size:16px}.fact span{font-size:10px}
+  .sheet-bar{padding:11px 12px calc(11px + env(safe-area-inset-bottom));gap:8px}
+  .sheet-bar .nm p{font-size:11px}.sheet-bar .nm b{font-size:17px}
+  .qty{gap:9px;padding:7px 9px}.sheet-bar .add{padding:11px 15px}
+  .ck-sheet{padding:19px 14px calc(24px + env(safe-area-inset-bottom));max-height:96dvh}
+  .duo{grid-template-columns:1fr}
+  .cart{padding:11px 12px calc(11px + env(safe-area-inset-bottom));gap:9px}
+  .cart .voirp{padding:12px 15px;font-size:13px}
+  .toast{bottom:calc(106px + env(safe-area-inset-bottom))}
+}
+@media(max-width:350px){
+  .grid{grid-template-columns:1fr}
+  .ph{aspect-ratio:4/3}
+  .site-link{font-size:0;width:44px;padding:0}
+  .site-link::before{content:"↗";font-size:18px}
+}
 </style>
 </head>
 <body>
 
-<div class="splash" id="splash" onclick="entrer()">
+<div class="splash" id="splash" onclick="entrer()" role="button" aria-label="Entrer dans le menu Maxence">
   <div class="halo"></div>
   <div class="braises" id="braises"></div>
   <div class="artifices" id="artifices"></div>
   <div class="inner">
-    <div class="mk">M</div>
-    <h1 id="titreSplash"></h1>
-    <div class="sous">Abomey-Calavi · Bénin</div>
+    <div class="splash-story">
+      <div class="splash-logo-shot"><img src="assets/logo-maxence.jpg" alt="Logo officiel du Restaurant Maxence"></div>
+      <div class="splash-reveal-shot">
+        <img src="assets/intro-chef-reveal-4k.png" alt="Le chef Maxence ouvre sa cloche et révèle le plat signature chaud">
+        <div class="steam" aria-hidden="true"><i></i><i></i><i></i></div>
+      </div>
+      <div class="splash-copy">
+        <h1 id="titreSplash">Restaurant Maxence</h1>
+        <div class="sous">Abomey-Calavi · Bénin</div>
+        <div class="table">La cloche s’ouvre sur notre <b>plat signature</b></div>
+      </div>
+    </div>
     <div class="fil"><i></i></div>
   </div>
   <div class="skip">Touchez pour entrer</div>
@@ -547,12 +678,12 @@ footer b{color:var(--braise)}
 <div class="app" id="app">
 <header class="top">
   <div class="top-in">
-    <div class="mark">M</div>
+    <div class="mark"><img src="assets/logo-maxence.jpg" alt="Logo Maxence"></div>
     <div class="brand">
       <h1>Restaurant Maxence</h1>
-      <span>Godomey · Bénin</span>
+      <span>Abomey-Calavi · Bénin</span>
     </div>
-    <a class="site-link" href="index.html">Notre site ↗</a>
+    <a class="site-link" href="https://www.maxencerestaurant.com/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site officiel du Restaurant Maxence">Notre site ↗</a>
   </div>
   <div class="cats" id="cats"></div>
 </header>
@@ -582,7 +713,7 @@ footer b{color:var(--braise)}
 
 <footer>
   Menu numérique réalisé par <b>NEXORA Marketing Digital</b><br>
-  Les photos des plats seront celles de votre établissement · Démonstration
+  Photos culinaires du Restaurant Maxence · Abomey-Calavi, Bénin
 </footer>
 
 <div class="veil" id="veil"><div class="sheet" id="sheet"></div></div>
@@ -766,7 +897,8 @@ footer b{color:var(--braise)}
     }
     art.appendChild(b);
   });
-  setTimeout(entrer, 3400);
+  const delaiIntro = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1200 : 7200;
+  setTimeout(entrer, delaiIntro);
 })();
 let entre=false;
 function entrer(){
@@ -775,8 +907,9 @@ function entrer(){
   document.getElementById('app').classList.add('in');
   setTimeout(()=>{ const sp=document.getElementById('splash'); if(sp) sp.remove(); }, 800);
 }
+document.addEventListener('keydown',e=>{ if((e.key==='Enter'||e.key===' ') && document.getElementById('splash')) entrer(); });
 
-const CARTE = [
+const CARTE_DEMO = [
   { cat:"Petit déjeuner", plats:[
     {n:"Omelette complète", em:"🍳", g:"250 g", p:1500, tag:"Matin", d:"Omelette de trois œufs, oignons frais, tomates, poivron vert, servie avec pain artisanal grillé et une portion de haricots à l'huile rouge.", inc:["Pain grillé","Café ou thé"], kcal:420, prot:22, lip:28, gluc:24},
     {n:"Bouillie & beignets", em:"🥣", g:"1 bol + 5 pcs", p:1000, tag:"Matin", d:"Bouillie de mil onctueuse relevée au gingembre et à la muscade, accompagnée de cinq beignets de haricot dorés à la demande.", inc:["Sucre à part"], kcal:380, prot:9, lip:12, gluc:58},
@@ -806,6 +939,71 @@ const CARTE = [
   ]},
 ];
 
+/* Carte finale Maxence : photos du restaurant + trois compositions 4K pour les visuels absents. */
+const CARTE = [
+  { cat:"Petit déjeuner", plats:[
+    {n:"Omelette complète", em:"🍳", g:"250 g", p:1500, tag:"Matin", d:"Omelette de trois œufs, oignons frais, tomates et poivron vert, servie avec pain artisanal grillé et haricots à l'huile rouge.", inc:["Pain grillé","Café ou thé"], kcal:420, prot:22, lip:28, gluc:24, img:"assets/generated-breakfast-4k.png", pos:"20% 18%"},
+    {n:"Bouillie & beignets", em:"🥣", g:"1 bol + 5 pcs", p:1000, tag:"Matin", d:"Bouillie de mil onctueuse relevée au gingembre et à la muscade, accompagnée de cinq beignets dorés.", inc:["Sucre à part"], kcal:380, prot:9, lip:12, gluc:58, img:"assets/generated-breakfast-4k.png", pos:"78% 18%"},
+    {n:"Pain omelette express", em:"🥪", g:"180 g", p:1000, tag:"", d:"Baguette garnie d'une omelette aux légumes, tomate, oignon rouge et sauce maison.", inc:["Sauce piment"], kcal:460, prot:18, lip:24, gluc:42, img:"assets/generated-breakfast-4k.png", pos:"20% 82%"},
+    {n:"Plateau matinal", em:"🍽️", g:"Pour 2", p:3500, tag:"À deux", d:"Deux omelettes, pain grillé, avocat, plantain sauté, jus d'ananas pressé et café.", inc:["Jus pressé","Café"], kcal:890, prot:34, lip:46, gluc:78, img:"assets/generated-breakfast-4k.png", pos:"80% 82%"},
+    {n:"Crêpes dorées", em:"🥞", g:"4 pièces", p:1500, tag:"Nouveau", d:"Crêpes fines et moelleuses, délicatement dorées et servies chaudes.", inc:["Sucre ou sirop"], kcal:430, prot:11, lip:14, gluc:64, img:"assets/crepes.jpg"},
+  ]},
+  { cat:"Chawarma", plats:[
+    {n:"Chawarma poulet", em:"🌯", g:"280 g", p:2000, tag:"Notre force", d:"Poulet mariné aux épices, grillé, crudités croquantes, cornichons et sauce blanche à l'ail.", inc:["Sauce ail","Frites 5 pcs"], kcal:610, prot:38, lip:29, gluc:48, img:"assets/chawarma-poulet.png", pos:"50% 50%", fit:"contain"},
+    {n:"Chawarma viande", em:"🥙", g:"300 g", p:2500, tag:"Notre force", d:"Bœuf mariné, crudités fraîches et sauce tahini dans un pain chaud et moelleux.", inc:["Sauce tahini","Frites 5 pcs"], kcal:680, prot:42, lip:34, gluc:50, img:"assets/chawarma-viande.png", pos:"50% 50%", fit:"contain"},
+    {n:"Chawarma mixte XXL", em:"🌮", g:"420 g", p:3500, tag:"Best-seller", d:"Poulet et bœuf, double portion, crudités, fromage fondu et deux sauces maison.", inc:["2 sauces","Frites 10 pcs"], kcal:960, prot:58, lip:48, gluc:72, img:"assets/chawarma-mixte-xxl.png", pos:"50% 50%"},
+    {n:"Assiette chawarma", em:"🍛", g:"450 g", p:3000, tag:"", d:"Viande de chawarma servie avec frites dorées et salade fraîche sur une grande assiette.", inc:["Frites","Salade"], kcal:820, prot:46, lip:36, gluc:78, img:"assets/assiette-chawarma.png", pos:"50% 46%"},
+  ]},
+  { cat:"Spécialités béninoises", plats:[
+    {n:"Plat signature Maxence", em:"🍲", g:"Portion royale", p:5000, tag:"Signature", d:"Pâte rouge onctueuse, assortiment généreux de viandes grillées, légumes mijotés et piment vert maison.", inc:["Légumes","Sauce maison","Piment vert"], kcal:1180, prot:72, lip:54, gluc:96, img:"assets/plat-signature.jpg"},
+    {n:"Amiwo royal & viandes", em:"🍖", g:"Grande portion", p:4500, tag:"Maison", d:"Pâte rouge parfumée accompagnée de morceaux de viande braisés, crudités et sauces traditionnelles.", inc:["Crudités","Deux sauces"], kcal:1040, prot:61, lip:48, gluc:90, img:"assets/photo-10-02-59-49.jpg"},
+    {n:"Sauce gombo au poisson", em:"🥘", g:"Grande portion", p:4000, tag:"Tradition", d:"Sauce gombo généreuse aux légumes verts, servie avec poisson et pâte selon disponibilité.", inc:["Pâte"], kcal:760, prot:46, lip:34, gluc:68, img:"assets/photo-5-03-28-39.jpg"},
+    {n:"Gbéma & pâte brune", em:"🥬", g:"Grande portion", p:3500, tag:"Populaire", d:"Sauce de feuilles finement préparée, viande mijotée, oignon rouge et trois boules de pâte brune.", inc:["Piment rouge"], kcal:880, prot:43, lip:36, gluc:98, img:"assets/photo-17-02-59-49.jpg", imgs:["assets/photo-17-02-59-49.jpg","assets/photo-19-02-59-49.jpg","assets/photo-22-02-59-49.jpg","assets/photo-9-03-28-39.jpg"]},
+    {n:"Gbéma & pâte blanche", em:"🥬", g:"Grande portion", p:3500, tag:"", d:"Sauce de feuilles à la viande, relevée d'oignons et de piment, accompagnée de pâte blanche.", inc:["Piment vert"], kcal:840, prot:41, lip:32, gluc:96, img:"assets/photo-13-02-59-49.jpg"},
+    {n:"Tripes épicées maison", em:"🍲", g:"450 g", p:3500, tag:"Relevé", d:"Tripes longuement mijotées dans une sauce épicée aux oignons rouges, herbes et piments frais.", inc:["Piment frais"], kcal:690, prot:52, lip:38, gluc:34, img:"assets/photo-24-02-59-49.jpg"},
+  ]},
+  { cat:"Poissons", plats:[
+    {n:"Poisson braisé Maxence", em:"🐟", g:"400–600 g", p:4500, tag:"Au feu", d:"Poisson entier mariné, braisé et servi avec crudités, sauce verte et accompagnement selon la formule.", inc:["Sauce verte","Crudités"], kcal:680, prot:58, lip:29, gluc:44, img:"assets/photo-14-03-28-39.jpg", imgs:["assets/photo-14-03-28-39.jpg","assets/photo-1-02-59-49.jpg","assets/photo-6-02-59-49.jpg","assets/photo-6-03-28-39.jpg","assets/photo-8-03-28-39.jpg"]},
+    {n:"Poisson en sauce rouge", em:"🐟", g:"400–600 g", p:4500, tag:"Maison", d:"Poisson entier nappé d'une sauce rouge riche aux tomates, oignons et piments, avec pâte au choix.", inc:["Sauce tomate","Pâte"], kcal:720, prot:55, lip:31, gluc:52, img:"assets/photo-11-03-28-39.jpg", imgs:["assets/photo-11-03-28-39.jpg","assets/photo-10-03-28-39.jpg","assets/photo-12-02-59-49.jpg","assets/photo-14-02-59-49.jpg","assets/photo-16-02-59-49.jpg"]},
+    {n:"Poisson, spaghetti & alloco", em:"🍝", g:"Grande assiette", p:4000, tag:"Complet", d:"Filets de poisson grillés posés sur des spaghetti aux légumes, entourés d'alloco caramélisé.", inc:["Alloco","Légumes"], kcal:960, prot:49, lip:34, gluc:116, img:"assets/photo-25-02-59-49.jpg"},
+  ]},
+  { cat:"Grillades", plats:[
+    {n:"Poulet braisé entier", em:"🍗", g:"1 pièce", p:5000, tag:"Partage", d:"Poulet fermier mariné et braisé, servi avec riz, frites, salade et crudités.", inc:["Riz","Frites","Crudités"], kcal:1120, prot:82, lip:64, gluc:38, img:"assets/photo-7-02-59-49.jpg"},
+    {n:"Poulet braisé & riz", em:"🍗", g:"1/2 poulet", p:3500, tag:"Complet", d:"Poulet braisé ou frit, riz parfumé et accompagnements frais selon la présentation du jour.", inc:["Riz","Salade"], kcal:860, prot:56, lip:38, gluc:74, img:"assets/photo-7-03-28-39.jpg", imgs:["assets/photo-7-03-28-39.jpg","assets/photo-8-02-59-49.jpg","assets/photo-9-02-59-49.jpg","assets/photo-18-02-59-49.jpg"]},
+    {n:"Brochettes de bœuf", em:"🍢", g:"5 pièces", p:3000, tag:"Au feu", d:"Brochettes de bœuf et de poulet marinées, grillées avec poivrons et oignons, servies avec pommes rôties et riz.", inc:["Pommes rôties","Riz","Sauces"], kcal:780, prot:54, lip:36, gluc:62, img:"assets/photo-16-03-28-39.jpg"},
+    {n:"Viande grillée & frites", em:"🥩", g:"400 g", p:4000, tag:"", d:"Morceaux de viande grillée aux poivrons, servis avec frites dorées et légumes sautés.", inc:["Frites","Légumes"], kcal:920, prot:58, lip:49, gluc:67, img:"assets/photo-5-02-59-49.jpg"},
+    {n:"Mix grill Maxence", em:"🍖", g:"Grande assiette", p:4500, tag:"Généreux", d:"Sélection de grillades avec frites, alloco et légumes sautés sur une grande assiette à partager.", inc:["Frites","Alloco","Légumes"], kcal:1160, prot:69, lip:61, gluc:84, img:"assets/photo-3-02-59-49.jpg"},
+  ]},
+  { cat:"Crémeux & salades", plats:[
+    {n:"Émincé crémeux, couscous & alloco", em:"🍛", g:"Grande assiette", p:4000, tag:"Doux", d:"Émincé tendre et champignons dans une sauce crémeuse, avec couscous, carottes et alloco.", inc:["Couscous","Alloco","Sauce verte"], kcal:980, prot:48, lip:46, gluc:96, img:"assets/photo-23-02-59-49.jpg", imgs:["assets/photo-23-02-59-49.jpg","assets/photo-3-03-28-39.jpg"]},
+    {n:"Poulet crème & pommes rôties", em:"🍗", g:"Grande assiette", p:4000, tag:"", d:"Cuisse de poulet dorée, jardinière crémeuse de légumes et pommes de terre rôties aux herbes.", inc:["Pommes rôties","Légumes"], kcal:890, prot:51, lip:43, gluc:78, img:"assets/photo-4-03-28-39.jpg"},
+    {n:"Salade complète Maxence", em:"🥗", g:"Grande assiette", p:3000, tag:"Frais", d:"Laitue, carotte, betterave, maïs, petits pois, tomates, œuf, viande et saucisse.", inc:["Vinaigrette maison"], kcal:620, prot:34, lip:31, gluc:52, img:"assets/photo-11-02-59-49.jpg"},
+    {n:"Salade crémeuse maison", em:"🥗", g:"350 g", p:2500, tag:"Frais", d:"Pommes de terre, pâtes, petits pois, maïs, carotte, oignon rouge et œuf dans une sauce crémeuse.", inc:["Œuf"], kcal:710, prot:22, lip:38, gluc:72, img:"assets/photo-15-03-28-39.jpg"},
+  ]},
+  { cat:"Pâtes & fast-food", plats:[
+    {n:"Spaghetti Maxence", em:"🍝", g:"Grande assiette", p:2500, tag:"Maison", d:"Spaghetti sautés aux légumes croquants, petits pois et maïs, servis avec œuf au plat et sauce maison.", inc:["Œuf au plat","Sauce maison"], kcal:790, prot:27, lip:29, gluc:105, img:"assets/spaghetti-maxence.jpg"},
+    {n:"Spaghetti omelette & frites", em:"🍝", g:"Grande assiette", p:3000, tag:"Complet", d:"Spaghetti aux légumes et saucisse, omelette dorée et portion de frites selon la formule.", inc:["Omelette","Frites"], kcal:1030, prot:39, lip:48, gluc:116, img:"assets/photo-21-02-59-49.jpg", imgs:["assets/photo-21-02-59-49.jpg","assets/photo-1-03-28-39.jpg","assets/photo-2-03-28-39.jpg"]},
+    {n:"Burger croustillant & frites", em:"🍔", g:"Menu complet", p:3000, tag:"Best-seller", d:"Burger généreux au poulet croustillant, fromage, salade, tomate, oignon et sauce maison, servi avec frites.", inc:["Frites","Ketchup"], kcal:1060, prot:46, lip:53, gluc:98, img:"assets/burger-frites.jpg", imgs:["assets/burger-frites.jpg","assets/photo-12-03-28-39.jpg"]},
+  ]},
+  { cat:"Pizzas", plats:[
+    {n:"Pizza poulet", em:"🍕", g:"Grande", p:5000, tag:"À partager", d:"Sauce tomate, mozzarella, poulet grillé, tomates, oignons rouges et poivrons verts.", inc:[], kcal:1240, prot:58, lip:49, gluc:142, img:"assets/photo-13-03-28-39.jpg"},
+    {n:"Pizza pepperoni", em:"🍕", g:"Grande", p:5000, tag:"", d:"Sauce tomate, mozzarella fondante, généreuses rondelles de pepperoni, tomate et poivron vert.", inc:[], kcal:1320, prot:54, lip:62, gluc:136, img:"assets/photo-15-02-59-49.jpg"},
+    {n:"Pizza saucisse & poivrons", em:"🍕", g:"Grande", p:5000, tag:"", d:"Mozzarella, saucisse fumée, poivrons rouges et verts, tomate et herbes fraîches.", inc:[], kcal:1270, prot:52, lip:57, gluc:140, img:"assets/photo-28-02-59-49.jpg"},
+    {n:"Pizza viande hachée", em:"🍕", g:"Grande", p:5500, tag:"Généreuse", d:"Pizza généreusement garnie de viande hachée assaisonnée, mozzarella, tomate, oignon et poivrons.", inc:[], kcal:1390, prot:67, lip:64, gluc:141, img:"assets/photo-29-02-59-49.jpg"},
+    {n:"Pizza royale Maxence", em:"🍕", g:"Grande", p:6000, tag:"Signature", d:"Viande hachée, légumes colorés, petits pois, maïs, oignon rouge et mozzarella gratinée.", inc:[], kcal:1450, prot:69, lip:66, gluc:148, img:"assets/photo-30-02-59-49.jpg"},
+  ]},
+  { cat:"Accompagnements", plats:[
+    {n:"Frites maison", em:"🍟", g:"200 g", p:1000, tag:"", d:"Pommes de terre taillées épaisses et frites jusqu'à obtenir un extérieur croustillant et un cœur fondant.", inc:["Ketchup ou mayo"], kcal:480, prot:6, lip:24, gluc:58, img:"assets/burger-frites.jpg", pos:"72% 60%"},
+    {n:"Attiéké", em:"🍚", g:"250 g", p:800, tag:"", d:"Semoule de manioc fermentée, légère et parfumée, préparée chaque matin.", inc:[], kcal:280, prot:3, lip:2, gluc:62, img:"assets/photo-8-03-28-39.jpg", pos:"18% 32%"},
+    {n:"Alloco", em:"🍌", g:"200 g", p:1000, tag:"", d:"Bananes plantains mûres coupées en biseau et frites, servies avec sauce pimentée aux oignons.", inc:["Sauce piment"], kcal:340, prot:2, lip:14, gluc:56, img:"assets/photo-25-02-59-49.jpg", pos:"78% 20%"},
+  ]},
+  { cat:"Boissons", plats:[
+    {n:"Jus d'ananas pressé", em:"🍍", g:"40 cl", p:1000, tag:"Frais", d:"Ananas pain de sucre pressé à la commande, sans sucre ajouté, servi avec glace pilée.", inc:["Glaçons"], kcal:180, prot:1, lip:0, gluc:44, img:"assets/generated-drinks-4k.png", pos:"16% 50%"},
+    {n:"Bissap glacé", em:"🌺", g:"40 cl", p:800, tag:"Frais", d:"Infusion de fleurs d'hibiscus à la menthe et au gingembre, légèrement sucrée et servie très fraîche.", inc:["Menthe"], kcal:120, prot:0, lip:0, gluc:30, img:"assets/generated-drinks-4k.png", pos:"50% 50%"},
+    {n:"Sucrerie", em:"🥤", g:"33 cl", p:600, tag:"", d:"Boisson gazeuse au choix parmi notre sélection, servie fraîche à la bouteille.", inc:["Glaçons"], kcal:140, prot:0, lip:0, gluc:36, img:"assets/generated-drinks-4k.png", pos:"84% 50%"},
+  ]},
+];
+
 const fmt = n => n.toLocaleString('fr-FR') + " F";
 let panier = [], plaCourant = null, qte = 1;
 
@@ -828,8 +1026,8 @@ CARTE.forEach((s,i)=>{
     const c = document.createElement('div'); c.className='card';
     const vert = ['Frais','Matin'].includes(p.tag);
     c.innerHTML = `
-      <div class="ph">
-        <div class="plate"></div><span>${p.em}</span>
+      <div class="ph${p.img?' has-photo':''}" style="--pos:${p.pos||'50% 50%'};--fit:${p.fit||'cover'}">
+        ${p.img?`<img class="menu-photo" src="${p.img}" alt="${p.n}" loading="lazy" decoding="async">`:`<div class="plate"></div><span>${p.em}</span>`}
         ${p.tag?`<div class="tagpop${vert?' vert':''}">${p.tag}</div>`:''}
       </div>
       <div class="body">
@@ -851,9 +1049,15 @@ CARTE.forEach((s,i)=>{
 // fiche plat
 function ouvrir(i,j){
   const p = CARTE[i].plats[j]; plaCourant = p; qte = 1;
+  const photos = p.imgs && p.imgs.length ? p.imgs : (p.img ? [p.img] : []);
   document.getElementById('sheet').innerHTML = `
     <button class="close" onclick="fermer()">×</button>
-    <div class="hero-ph"><div class="plate"></div><span>${p.em}</span></div>
+    <div class="hero-ph${p.img?' has-photo':''}" style="--pos:${p.pos||'50% 50%'};--fit:${p.fit||'cover'}">
+      ${p.img?`<img class="hero-photo" id="heroPhoto" src="${p.img}" alt="${p.n}">`:`<div class="plate"></div><span>${p.em}</span>`}
+    </div>
+    ${photos.length>1?`<div class="gallery" aria-label="Autres présentations de ${p.n}">
+      ${photos.map((src,k)=>`<button class="${k===0?'on':''}" data-src="${src}" data-pos="${k===0?(p.pos||'50% 50%'):'50% 50%'}" onclick="changerPhoto(this)" aria-label="Voir la photo ${k+1}"><img src="${src}" alt="" loading="lazy"></button>`).join('')}
+    </div>`:''}
     <div class="sheet-body">
       <h3>${p.n}</h3>
       <p class="compo">${p.d}</p>
@@ -878,6 +1082,13 @@ function ouvrir(i,j){
   document.getElementById('veil').classList.add('on');
   document.body.style.overflow='hidden';
 }
+function changerPhoto(b){
+  const im = document.getElementById('heroPhoto');
+  if(!im) return;
+  im.src = b.dataset.src;
+  im.parentElement.style.setProperty('--pos', b.dataset.pos || '50% 50%');
+  b.parentElement.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+}
 function fermer(){ document.getElementById('veil').classList.remove('on'); document.body.style.overflow=''; }
 document.getElementById('veil').onclick = e => { if(e.target.id==='veil') fermer(); };
 function majQ(d){ qte = Math.max(1, qte+d); document.getElementById('q').textContent = qte; }
@@ -885,7 +1096,7 @@ function ajouterDepuisFiche(){ ajouter(plaCourant, qte); fermer(); }
 
 function ajouter(p, n){
   const ex = panier.find(x=>x.n===p.n);
-  if(ex) ex.q += n; else panier.push({n:p.n, p:p.p, q:n, em:p.em});
+  if(ex) ex.q += n; else panier.push({n:p.n, p:p.p, q:n, em:p.em, img:p.img||''});
   majPanier(); toast(`${p.n} ajouté`);
 }
 function majPanier(){
@@ -939,7 +1150,7 @@ function rendrePanier(){
     <div class="pn">
       ${panier.map((x,i)=>`
         <div class="pn-li">
-          <div class="em">${x.em||'🍽️'}</div>
+          <div class="em">${x.img?`<img src="${x.img}" alt="">`:(x.em||'🍽️')}</div>
           <div class="in"><b>${x.n}</b><span><i>${fmt(x.p)}</i> l'unité · ${fmt(x.p*x.q)}</span></div>
           <div class="pnq">
             <button class="${x.q===1?'del':''}" onclick="modQ(${i},-1)">${x.q===1?'🗑':'−'}</button>
@@ -1016,7 +1227,7 @@ function choisir(m){
         <div class="fld"><label>Chambre / étage</label><input id="fCh" placeholder="Ex : 214"></div>
       </div>
       <div class="fld"><label>Quartier / adresse</label>
-        <input id="fAdr" placeholder="Ex : Godomey, Rte de Yeyinou" oninput="vLiv()"></div>
+        <input id="fAdr" placeholder="Ex : Abomey-Calavi, route de Yeyinou" oninput="vLiv()"></div>
       <div class="fld"><label>Repère pour le livreur</label>
         <textarea id="fRep" placeholder="Ex : juste après la pharmacie, portail bleu"></textarea>
         <div class="hint">Un bon repère, c'est dix minutes de gagnées.</div>
